@@ -74,7 +74,8 @@ function getRandomWordObject(difficulty, crosswordStateWords) {
         .toLowerCase()
         .includes(randLetter.letter.toLowerCase())
     );
-    console.log(wordsThatContainRandLetter);
+    
+    let randomWord = getRandomWordFromArray(wordsThatContainRandLetter);
 }
 
 function getAllLetterPositions(crosswordStateWords) {
@@ -105,8 +106,8 @@ function getAllLetterPositions(crosswordStateWords) {
 /**
  * 
  */
-function getRandomWord (difficulty) {
-
+function getRandomWordFromArray (array) {
+    return array[getRandomRange(0, array.length - 1)].word;
 }
 
 /**
