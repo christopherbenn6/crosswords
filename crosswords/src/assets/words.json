@@ -107,5 +107,7 @@
   { "word": "BIG", "clue": "Large in size" },
   { "word": "SMALL", "clue": "Little in size" },
   { "word": "LIGHT", "clue": "Opposite of dark" },
-  { "word": "DARK", "clue": "Opposite of light" }
+  { "word": "DARK", "clue": "Opposite of light" },
+
+  { "word": "XYLOPHONE", "clue": "A musical percussion instrument made of tuned wooden bars struck by mallets" }
 ]
