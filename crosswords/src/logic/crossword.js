@@ -26,10 +26,25 @@ export async function createCrosswordData(difficulty, wordCount) {
                         YPos: 17
                     },
                     {
-                        letter: "x",
+                        letter: "e",
+                        XPos: 9,
+                        YPos: 17
+                    },
+                    {
+                        letter: "e",
+                        XPos: 10,
+                        YPos: 17
+                    },
+                    {
+                        letter: "s",
                         XPos: 11,
                         YPos: 17
-                    }
+                    },
+                    {
+                        letter: "e",
+                        XPos: 12,
+                        YPos: 17
+                    },
                 ] 
             },
             {
@@ -37,14 +52,29 @@ export async function createCrosswordData(difficulty, wordCount) {
                 direction: "down",
                 letters: [
                     {
-                        letter: "x",
+                        letter: "b",
                         XPos: 11,
-                        YPos: 17
+                        YPos: 13
                     },
                     {
-                        letter: "b",
-                        XPos: 6,
-                        YPos: 21
+                        letter: "a",
+                        XPos: 11,
+                        YPos: 14
+                    },
+                    {
+                        letter: "l",
+                        XPos: 11,
+                        YPos: 15
+                    },
+                    {
+                        letter: "l",
+                        XPos: 11,
+                        YPos: 16
+                    },
+                    {
+                        letter: "s",
+                        XPos: 11,
+                        YPos: 17
                     }
                 ] 
             }
@@ -74,8 +104,12 @@ function getRandomWordObject(difficulty, crosswordStateWords) {
         .toLowerCase()
         .includes(randLetter.letter.toLowerCase())
     );
-    
-    let randomWord = getRandomWordFromArray(wordsThatContainRandLetter);
+
+    let randWord = getRandomWordFromArray(wordsThatContainRandLetter);
+    let isVertical = checkIsVertical(crosswordStateWords, randLetter, allLetters);
+
+    let wordObject = createWordObject(randWord, randLetter, isVertical)
+    let isValid = isValidWord(wordObject, allLetters);
 }
 
 function getAllLetterPositions(crosswordStateWords) {
@@ -99,7 +133,7 @@ function getAllLetterPositions(crosswordStateWords) {
             }
         });
     });
-    console.log(allLetterPositions);
+    console.log(["All Letter Positions",  allLetterPositions]);
     return allLetterPositions;
 }
 
@@ -121,8 +155,104 @@ function getRandomRange(min, max){
 }
 
 /**
+ * 
+ * @param {string} word - The randomly chosen word
+ * @param {object} letter - The random letter and location to place the word
  * @returns {boolean}
  */
-function isValidWord() {
+function checkIsVertical (words, letter) {
+    for (const word of words) {
+        const matchingLetter = word.letters.find(
+            l => l.XPos === letter.XPos && l.YPos === letter.YPos
+        );
 
+        if (matchingLetter) {
+            return word.direction === "across";
+        }
+    }
+}
+
+/**
+ * 
+ * @param {*} word 
+ * @param {*} letter 
+ * @param {*} isVertical 
+ */
+function createWordObject(word, letter, isVertical) {
+    let object = {
+        word: word,
+        direction: isVertical ? "down" : "across",
+        letters: []
+    };
+
+    word = word.toLowerCase();
+    const targetLetter = letter.letter.toLowerCase();
+
+    // Find every occurrence of the intersecting letter
+    const matchingIndexes = [];
+
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === targetLetter) {
+            matchingIndexes.push(i);
+        }
+    }
+
+    // Make sure the letter actually exists in the word
+    if (matchingIndexes.length === 0) {
+        return null;
+    }
+
+    // Pick a random occurrence
+    const randomIndex =
+        matchingIndexes[Math.floor(Math.random() * matchingIndexes.length)];
+
+    // Add the letters before the intersection
+    for (let i = 0; i < randomIndex; i++) {
+        object.letters.push({
+            letter: word[i],
+            XPos: isVertical ? letter.XPos : letter.XPos - randomIndex + i,
+            YPos: isVertical ? letter.YPos - randomIndex + i : letter.YPos
+        });
+    }
+
+    // Add the intersecting letter
+    object.letters.push(letter);
+
+    // Add the letters after the intersection
+    for (let i = randomIndex + 1; i < word.length; i++) {
+        object.letters.push({
+            letter: word[i],
+            XPos: isVertical ? letter.XPos : letter.XPos + (i - randomIndex),
+            YPos: isVertical ? letter.YPos + (i - randomIndex) : letter.YPos
+        });
+    }
+
+    console.log(object);
+
+    return object;
+}
+
+/**
+ * @param {string} word - The word object
+ * @param {object} letter - The random letter and location to place the word
+ * @returns {boolean}
+ */
+function isValidWord(word, allLetters) {
+    // Check the position of every letter to see if it matches another location, but NOT the same letter
+    let isValid = true;
+
+    // Check to see if this location overlaps any current letters
+    allLetters.forEach(refLetterObject => {
+        word.letters.forEach(newWordLetterObject => {
+            // If same position, different letter
+            if(refLetterObject.XPos === newWordLetterObject.XPos
+                && refLetterObject.YPos === newWordLetterObject.YPos
+                && refLetterObject.letter !== newWordLetterObject.letter
+            ) {
+                isValid = false;
+            }
+        })
+    });
+
+    
 }
