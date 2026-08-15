@@ -6,122 +6,13 @@ import words from "../assets/words.json"
  */
 export async function createCrosswordData(difficulty, wordCount) {
     // Maximum dimensions of the crossword puzzle
-    const gridHeight = 30;
-    const gridWidth = 30;
-
-    // let crosswordState = {
-    //     words: [
-    //         {
-    //             word: "cheexe",
-    //             direction: "across",
-    //             letters: [
-    //                 {
-    //                     letter: "c",
-    //                     XPos: 7,
-    //                     YPos: 17
-    //                 },
-    //                 {
-    //                     letter: "h",
-    //                     XPos: 8,
-    //                     YPos: 17
-    //                 },
-    //                 {
-    //                     letter: "e",
-    //                     XPos: 9,
-    //                     YPos: 17
-    //                 },
-    //                 {
-    //                     letter: "e",
-    //                     XPos: 10,
-    //                     YPos: 17
-    //                 },
-    //                 {
-    //                     letter: "s",
-    //                     XPos: 11,
-    //                     YPos: 17
-    //                 },
-    //                 {
-    //                     letter: "e",
-    //                     XPos: 12,
-    //                     YPos: 17
-    //                 },
-    //             ] 
-    //         },
-    //         {
-    //             word: "ballx",
-    //             direction: "down",
-    //             letters: [
-    //                 {
-    //                     letter: "b",
-    //                     XPos: 11,
-    //                     YPos: 13
-    //                 },
-    //                 {
-    //                     letter: "a",
-    //                     XPos: 11,
-    //                     YPos: 14
-    //                 },
-    //                 {
-    //                     letter: "l",
-    //                     XPos: 11,
-    //                     YPos: 15
-    //                 },
-    //                 {
-    //                     letter: "l",
-    //                     XPos: 11,
-    //                     YPos: 16
-    //                 },
-    //                 {
-    //                     letter: "s",
-    //                     XPos: 11,
-    //                     YPos: 17
-    //                 }
-    //             ] 
-    //         }
-    //     ],
-
-    // };
+    const gridSize = 30;
 
     let crosswordState = {
-        words: [{
-                    word: "cheese",
-                    direction: "across",
-                    letters: [
-                        {
-                            letter: "c",
-                            XPos: 7,
-                            YPos: 17
-                        },
-                        {
-                            letter: "h",
-                            XPos: 8,
-                            YPos: 17
-                        },
-                        {
-                            letter: "e",
-                            XPos: 9,
-                            YPos: 17
-                        },
-                        {
-                            letter: "e",
-                            XPos: 10,
-                            YPos: 17
-                        },
-                        {
-                            letter: "s",
-                            XPos: 11,
-                            YPos: 17
-                        },
-                        {
-                            letter: "e",
-                            XPos: 12,
-                            YPos: 17
-                        },
-                    ] 
-                }]
+        words: []
     };
-    for(let i = wordCount - 1; i > 0; i--) {
-        crosswordState.words.push(getRandomWordObject(difficulty, crosswordState.words));
+    for(let i = wordCount; i > 0; i--) {
+        crosswordState.words.push(getRandomWordObject(difficulty, crosswordState.words, gridSize));
     }
     console.log(crosswordState)
 
@@ -132,8 +23,14 @@ export async function createCrosswordData(difficulty, wordCount) {
  * @param {int} difficulty - Interger from 1 to 3
  * @param {Object} crosswordState 
  */
-function getRandomWordObject(difficulty, crosswordStateWords) {
+function getRandomWordObject(difficulty, crosswordStateWords, gridSize) {
     const allLetters = getAllLetterPositions(crosswordStateWords);
+
+    // No word has been added yet
+    if(crosswordStateWords.length === 0) {
+        return createFirstWordObject(getRandomWordFromArray(words), gridSize)
+    }
+
     let newWord;
     let wordAdded = false;
 
@@ -224,6 +121,24 @@ function checkIsVertical (words, letter) {
             return word.direction === "across";
         }
     }
+}
+
+function createFirstWordObject(word, gridSize) {
+    let object = {
+        word: word,
+        direction: "across",
+        letters: []
+    };
+
+    for(let i = 0; i < word.length; i++) {
+        object.letters.push({
+            letter: word[i],
+            XPos: Math.floor((gridSize / 2) + (word.length / 2) - word.length) + i,
+            YPos: Math.floor((gridSize / 2) + (word.length / 2) - word.length)
+        })
+    }
+
+    return object;
 }
 
 /**
