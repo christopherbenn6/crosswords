@@ -9,13 +9,30 @@ export async function createCrosswordData(difficulty, wordCount) {
     const gridSize = 30;
 
     let crosswordState = {
-        words: []
+        words: [],
+        xLength: "",
+        yLength: ""
     };
     for(let i = wordCount; i > 0; i--) {
         crosswordState.words.push(getRandomWordObject(difficulty, crosswordState.words, gridSize));
     }
-    console.log(crosswordState)
 
+    crosswordState.xLength = crosswordState.words
+        .flatMap(word => word.letters)
+        .reduce((max, letter) => Math.max(max, letter.XPos), -Infinity)
+        - crosswordState.words
+        .flatMap(word => word.letters)
+        .reduce((min, letter) => Math.min(min, letter.XPos), Infinity);
+
+    crosswordState.yLength = crosswordState.words
+        .flatMap(word => word.letters)
+        .reduce((max, letter) => Math.max(max, letter.YPos), -Infinity)
+        - crosswordState.words
+        .flatMap(word => word.letters)
+        .reduce((min, letter) => Math.min(min, letter.YPos), Infinity);
+
+    console.log(crosswordState)
+    return crosswordState;
 }
 
 /**
