@@ -1,18 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import { createCrosswordData } from './logic/crossword'
+import Button from './components/generateButton.jsx'
 
-createCrosswordData(1, 10);
+const difficulty = 1;
+const wordCount = 10;
+
+let crosswordData = createCrosswordData(difficulty, wordCount);
 
 function App() {
   const [count, setCount] = useState(0)
 
   return <>
-    <main>
-
+    <main className="main">
+      <h1><span>Random</span> Crosswords</h1>
+      <Button></Button>
     </main>
     <footer>
 

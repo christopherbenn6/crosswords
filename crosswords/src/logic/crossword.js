@@ -31,7 +31,6 @@ export async function createCrosswordData(difficulty, wordCount) {
         .flatMap(word => word.letters)
         .reduce((min, letter) => Math.min(min, letter.YPos), Infinity);
 
-    console.log(crosswordState)
     return crosswordState;
 }
 
