@@ -10,14 +10,17 @@ function App() {
   const [difficulty, setDifficulty] = useState(1)
   const [wordCount, setWordCount] = useState(10)
   const [view, setView] = useState("home");
+  const [crosswordData, setCrosswordData] = useState({});
 
   async function generateCallback(wordCount, difficulty) {
     // Set Values for Later
     setDifficulty(difficulty);
     setWordCount(wordCount);
-    setView("crossword")
 
     let crosswordData = await createCrosswordData(difficulty, wordCount);
+    setCrosswordData(crosswordData)
+    setView("crossword")
+
     console.log(crosswordData)
   }
 
@@ -31,7 +34,7 @@ function App() {
   )}
 
   { view === "crossword" && (
-    <Crossword backButtonCallback={backButtonCallback}></Crossword>
+    <Crossword backButtonCallback={backButtonCallback} wordObjects={crosswordData.words}></Crossword>
   )}
     
   </>

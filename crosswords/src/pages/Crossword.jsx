@@ -2,7 +2,7 @@ import Back from "../components/back"
 import Clues from "../components/clues"
 import GenerateButton from "../components/generateButton"
 
-export default function Crossword({backButtonCallback}) {
+export default function Crossword({backButtonCallback, wordObjects}) {
     return <main className="main crossword-main">
         {/* back, h1, top text */}
         <div className="crossword-top">
@@ -16,8 +16,8 @@ export default function Crossword({backButtonCallback}) {
 
         {/* flexbox with crossword clues */}
         <div className="crossword-clues-container">
-            <Clues direction="across"></Clues>
-            <Clues direction="down"></Clues>
+            <Clues direction="across" wordObjects={wordObjects}></Clues>
+            <Clues direction="down" wordObjects={wordObjects}></Clues>
         </div>
     </main>
 }
