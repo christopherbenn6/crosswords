@@ -44,7 +44,9 @@ function getRandomWordObject(difficulty, crosswordStateWords, gridSize) {
 
     // No word has been added yet
     if(crosswordStateWords.length === 0) {
-        return createFirstWordObject(getRandomWordFromArray(words), gridSize)
+        let word = getRandomWordFromArray(words);
+        let clue = getClue(words, word)
+        return createFirstWordObject(word, gridSize, clue)
     }
 
     let newWord;
@@ -53,25 +55,31 @@ function getRandomWordObject(difficulty, crosswordStateWords, gridSize) {
     // Loop this until a valid word has been found
     while(!wordAdded) {
         const randLetter = allLetters[getRandomRange(0, allLetters.length - 1)]
-        console.log(randLetter);
 
         // Filter the words that contain the random letter
         const wordsThatContainRandLetter = words.filter(wordObject =>
         wordObject.word
             .toLowerCase()
             .includes(randLetter.letter.toLowerCase())
+            && !crosswordStateWords.some(
+                addedWord => addedWord.word === wordObject.word
+            )
         );
 
-        let randWord = getRandomWordFromArray(wordsThatContainRandLetter);
-        let isVertical = checkIsVertical(crosswordStateWords, randLetter, allLetters);
+        if(wordsThatContainRandLetter.length !== 0) {
 
-        let wordObject = createWordObject(randWord, randLetter, isVertical)
-        let isValid = isValidWord(wordObject, allLetters, crosswordStateWords);
+            let randWord = getRandomWordFromArray(wordsThatContainRandLetter);
+            let clue = getClue(wordsThatContainRandLetter, randWord);
 
-        if(isValid) {
-            newWord = wordObject;
-            console.log("Added")
-            wordAdded = true;
+            let isVertical = checkIsVertical(crosswordStateWords, randLetter, allLetters);
+
+            let wordObject = createWordObject(randWord, randLetter, isVertical, clue)
+            let isValid = isValidWord(wordObject, allLetters, crosswordStateWords);
+
+            if(isValid) {
+                newWord = wordObject;
+                wordAdded = true;
+            }
         }
     }
 
@@ -100,7 +108,7 @@ function getAllLetterPositions(crosswordStateWords) {
             }
         });
     });
-    console.log(["All Letter Positions",  allLetterPositions]);
+    
     return allLetterPositions;
 }
 
@@ -110,6 +118,10 @@ function getAllLetterPositions(crosswordStateWords) {
 function getRandomWordFromArray (array) {
     return array[getRandomRange(0, array.length - 1)].word;
 }
+
+function getClue (array, word) {{
+    return array.find(wordObject => wordObject.word === word).clue
+}}
 
 /**
  * 
@@ -139,10 +151,11 @@ function checkIsVertical (words, letter) {
     }
 }
 
-function createFirstWordObject(word, gridSize) {
+function createFirstWordObject(word, gridSize, clue) {
     let object = {
         word: word,
         direction: "across",
+        clue: clue,
         letters: []
     };
 
@@ -163,10 +176,11 @@ function createFirstWordObject(word, gridSize) {
  * @param {*} letter 
  * @param {*} isVertical 
  */
-function createWordObject(word, letter, isVertical) {
+function createWordObject(word, letter, isVertical, clue) {
     let object = {
         word: word,
         direction: isVertical ? "down" : "across",
+        clue: clue,
         letters: []
     };
 
@@ -211,8 +225,6 @@ function createWordObject(word, letter, isVertical) {
             YPos: isVertical ? letter.YPos + (i - randomIndex) : letter.YPos
         });
     }
-
-    console.log(object);
 
     return object;
 }
@@ -279,12 +291,10 @@ function isValidWord(word, allLetters, crosswordStateWords) {
             if(existingDownLetter) {
                 if(!areLettersInSameWord(word.letters[i], existingDownLetter, crosswordStateWords)) {
                     isValid = false;
-                    console.log(isValid)
                 }
             } else if(existingUpLetter) {
                 if(!areLettersInSameWord(word.letters[i], existingUpLetter, crosswordStateWords)) {
                     isValid = false;
-                    console.log(isValid)
                 }
             }
         }
