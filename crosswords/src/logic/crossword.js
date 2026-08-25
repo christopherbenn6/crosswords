@@ -31,6 +31,8 @@ export async function createCrosswordData(difficulty, wordCount) {
         .flatMap(word => word.letters)
         .reduce((min, letter) => Math.min(min, letter.YPos), Infinity);
 
+    crosswordState.words = numberCrosswordWords(crosswordState)
+
     return crosswordState;
 }
 
@@ -108,7 +110,7 @@ function getAllLetterPositions(crosswordStateWords) {
             }
         });
     });
-    
+
     return allLetterPositions;
 }
 
@@ -357,4 +359,40 @@ function areLettersInSameWord(x, y, crosswordStateWords) {
         return word.letters.includes(x) &&
             word.letters.includes(y);
 });
+}
+
+function numberCrosswordWords (crosswordState) {
+    // Set Clue Numbers - Top to Bottom, Left to Right
+    const sortedWords = crosswordState.words.sort((a, b) => {
+        const aStart = a.letters[0];
+        const bStart = b.letters[0];
+
+        // If they are not the same YPos
+        if(aStart.YPos !== bStart.YPos) {
+            return aStart.YPos - bStart.YPos;
+        }
+
+        // If they are, go left to right
+        return aStart.XPos - bStart.XPos
+    })
+
+    let clueNumber = 1;
+    let previousPosition = null;
+
+    return sortedWords.map(wordObject => {
+        const firstLetter = wordObject.letters[0];
+
+        const position = `${firstLetter.XPos},${firstLetter.YPos}`;
+
+        // Only increment if this is a new starting position
+        if (position !== previousPosition) {
+            clueNumber++;
+            previousPosition = position;
+        }
+
+        return {
+            ...wordObject,
+            clueNumber: clueNumber - 1
+        };
+    });
 }
