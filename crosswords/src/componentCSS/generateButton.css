@@ -1,0 +1,139 @@
+.generate-button {
+    font-family: var(--font);
+    width: 100%;
+    max-width: 350px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.generate {
+    background-image: var(--button-gradient);
+    display: flex;
+    align-items: center;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0.25rem;
+    flex: 1;
+    justify-content: center;
+    background-color: var(--teal-100);
+    transition: background-color 0.25s ease;
+}
+
+.generate:hover {
+    background-color: var(--teal-300);
+    background-image: unset;
+}
+
+.upper-generate-button {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 350px;
+}
+
+.generate-settings-button {
+    background-color: var(--teal-500);
+    border-radius: 0 1rem 1rem 0;
+    padding: 0.25rem 0.5rem;
+
+}
+
+.generate-settings-button svg {
+    transition: all 0.5s ease;
+}
+
+.generate-settings-button:hover svg {
+    rotate: 180deg;
+}
+
+.generate-button svg path {
+    fill: var(--teal-800);
+}
+
+.generate-button svg {
+    max-width: 3rem;
+    height: auto;
+}
+
+.generate span {
+    font-size: 2rem;
+    font-family: var(--font);
+
+    /* Alignment Issues */
+    margin-top: -1rem;
+    margin-bottom: -0.5rem;
+    margin-left: 1rem;
+}
+
+.generate-settings {
+    color: var(--off-white);
+    border: 1px solid var(--teal-100);
+    border-radius: 0 0 1rem 1rem;
+    padding: 1rem;
+}
+
+.generate-settings>div {
+    display: flex;
+}
+
+.generate-settings>div>* {
+    width: 50%;
+}
+
+.generate-settings>div:last-of-type {
+    margin-top: 0.5rem;
+}
+
+.generate-settings>div>p {
+    text-align: left;
+    white-space: nowrap;
+    font-size: 1.5rem;
+}
+
+.generate-settings input {
+    max-width: 4rem;
+    text-align: center;
+}
+
+.stepper p,
+.selected {
+    background-color: var(--teal-100);
+    color: var(--off-black);
+    font-size: 1.25rem;
+    width: 3rem;
+}
+
+.difficulty-options p:not(.selected) {
+    background-color: var(--teal-500);
+    color: var(--off-black);
+    font-size: 1.25rem;
+    width: 3rem;
+}
+
+.difficulty-options,
+.stepper {
+    display: flex;
+    width: 100%;
+    gap: 0.25rem;
+}
+
+.generate-settings {
+    opacity: 0;
+    height: 0 !important;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    padding: 0;
+}
+
+.open-settings {
+    padding: 1rem;
+    opacity: unset;
+    height: unset !important;
+}
+
+.generate-button:has(.open-settings) .generate-settings-button,
+.generate-button:has(.open-settings) .generate {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
