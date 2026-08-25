@@ -21,13 +21,17 @@ function App() {
     console.log(crosswordData)
   }
 
+  function backButtonCallback() {
+    setView("home")
+  }
+
   return <>
   { view === "home" && (
     <Home callback={generateCallback}></Home>
   )}
 
   { view === "crossword" && (
-    <Crossword></Crossword>
+    <Crossword backButtonCallback={backButtonCallback}></Crossword>
   )}
     
   </>
