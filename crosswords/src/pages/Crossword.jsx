@@ -2,11 +2,18 @@ import Back from "../components/back"
 import Clues from "../components/clues"
 import CrosswordPuzzle from "../components/crosswordPuzzle"
 import GenerateButton from "../components/generateButton"
+import { useState } from "react"
 
-export default function Crossword({backButtonCallback, wordObjects}) {
+export default function Crossword({callback, backButtonCallback, wordObjects}) {
     console.log(wordObjects)
+    const [crosswordState, setCrosswordState] = useState([])
+
     function clueClickCallback () {
 
+    }
+
+    function resetDataCallback () {
+        setCrosswordState([])
     }
 
     return <main className="main crossword-main">
@@ -17,12 +24,12 @@ export default function Crossword({backButtonCallback, wordObjects}) {
                 <div className="crossword-top-flex"></div>
                 <h1>Random Crosswords</h1>
             </div>
-            <GenerateButton wordObjects={wordObjects}></GenerateButton>
+            <GenerateButton resetDataCallback={resetDataCallback} callback={callback}></GenerateButton>
         </div>
  
         {/* flexbox with crossword clues */}
         <div className="crossword-clues-container">
-            <CrosswordPuzzle wordObjects={wordObjects}></CrosswordPuzzle>
+            <CrosswordPuzzle crosswordState={crosswordState} setCrosswordState={setCrosswordState} wordObjects={wordObjects}></CrosswordPuzzle>
             <div className="clues">
                 <Clues clueClickCallback={clueClickCallback} direction="across" wordObjects={wordObjects}></Clues>
                 <Clues clueClickCallback={clueClickCallback} direction="down" wordObjects={wordObjects}></Clues>

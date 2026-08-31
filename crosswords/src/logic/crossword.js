@@ -156,7 +156,6 @@ function checkIsVertical (words, letter) {
 }
 
 function createFirstWordObject(word, gridSize, clue) {
-    console.log(word)
     let object = {
         word: word,
         direction: "across",
@@ -241,9 +240,7 @@ function createWordObject(word, letter, isVertical, clue) {
  * @returns {boolean}
  */
 function isValidWord(word, allLetters, crosswordStateWords) {
-    console.log(crosswordStateWords)
-    
-    console.log(word)
+
     // Check the position of every letter to see if it matches another location, but NOT the same letter
     let isValid = true;
 
@@ -255,12 +252,10 @@ function isValidWord(word, allLetters, crosswordStateWords) {
                 && refLetterObject.YPos === newWordLetterObject.YPos
                 && refLetterObject.letter !== newWordLetterObject.letter
             ) {
-                console.log("Failed due to Overlap")
                 isValid = false;
             }
         })
     });
-    console.log(word.direction)
     // Here we check a "bubble" around the word to check for anything side by side that would break the word or create new ones
     if(word.direction == "across") {
 
@@ -316,15 +311,11 @@ function isValidWord(word, allLetters, crosswordStateWords) {
         const downXPos = word.letters[word.letters.length - 1].XPos;
         const downYPos = word.letters[word.letters.length - 1].YPos + 1;
 
-        console.log("upXPos"+upXPos)
-        console.log("downXPos"+downXPos)
-
         if(allLetters.find(
             letterPosition =>
                 (letterPosition.XPos === upXPos && letterPosition.YPos === upYPos)
                 || (letterPosition.XPos === downXPos && letterPosition.YPos === downYPos)
         )) {
-            console.log("Failed due to up/down check")
             isValid = false;
         }
 
@@ -350,14 +341,12 @@ function isValidWord(word, allLetters, crosswordStateWords) {
             // Check for both that letter and the current letter in the same word
             if(existingLeftLetter) {
                 if(!areLettersInSameWord(word.letters[i], existingLeftLetter, crosswordStateWords)) {
-                    console.log("Down, failed bubble check")
                     isValid = false;
                 }
             } 
 
             if(existingRightLetter) {
                 if(!areLettersInSameWord(word.letters[i], existingRightLetter, crosswordStateWords)) {
-                    console.log("Down, failed bubble check")
                     isValid = false;
                 }
             }

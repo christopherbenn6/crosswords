@@ -34,7 +34,7 @@ function App() {
   )}
 
   { view === "crossword" && (
-    <Crossword backButtonCallback={backButtonCallback} wordObjects={crosswordData.words}></Crossword>
+    <Crossword callback={generateCallback} backButtonCallback={backButtonCallback} wordObjects={crosswordData.words}></Crossword>
   )}
     
   </>

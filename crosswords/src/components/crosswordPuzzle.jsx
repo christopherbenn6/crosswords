@@ -1,9 +1,31 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { useRef } from "react";
 import CrosswordCell from "./crosswordCell";
 
-export default function CrosswordPuzzle ({wordObjects}) {
-    console.log(wordObjects)
+export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrosswordState}) {
+    const [selectedLetter, setSelectedLetter] = useState(null);
+    const [selectedWord, setSelectedWord] = useState(null)
+    const [selectedWordDirection, setSelectedWordDirection] = useState('across');
+
+    function selectLetterHandler (letter) {
+        setSelectedLetter(letter)
+        let possibleWords = []
+        wordObjects.forEach(wordObject => {
+            if(wordObject.letters.includes(letter)) {
+                possibleWords.push(wordObject)
+            }
+        });
+
+        if(possibleWords.length > 1) {
+            let wordObject = possibleWords.find(word => word.direction === selectedWordDirection)
+            setSelectedWord(wordObject)
+        } else {
+            let wordObject = possibleWords[0];
+            setSelectedWord(wordObject)
+            setSelectedWordDirection(wordObject.direction)
+        }
+    }
+
     const [zoom, setZoom] = useState(1)
     const [pan, setPan] = useState({
         x: 0,
@@ -31,8 +53,6 @@ export default function CrosswordPuzzle ({wordObjects}) {
     }
 
     function wheelHandler(e) {
-        e.preventDefault();
-
         const rect = e.currentTarget.getBoundingClientRect();
 
         // Mouse position inside the viewport
@@ -71,6 +91,10 @@ export default function CrosswordPuzzle ({wordObjects}) {
     }
 
     function handlePointerDown(e) {
+        if (e.target.closest(".cell")) {
+            return;
+        }
+
         setDragging(true);
 
         dragStart.current = {
@@ -90,6 +114,96 @@ export default function CrosswordPuzzle ({wordObjects}) {
         setDragging(false);
     }
 
+    function handleKeyDown(e) {
+        // Ingore if the user has not selected anything yet
+        if(!selectedLetter) return;
+
+        // If the key is a single character (not backspace/space/etc) and it is a letter
+        if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
+
+            setCrosswordState(current => {
+
+                // Filter out the current position, to then replace it
+                const newState = current.filter(
+                    letter =>
+                        !(
+                            letter.XPos === selectedLetter.XPos &&
+                            letter.YPos === selectedLetter.YPos
+                        )
+                );
+
+                newState.push({
+                    XPos: selectedLetter.XPos,
+                    YPos: selectedLetter.YPos,
+                    letter: e.key.toUpperCase()
+                });
+
+                return newState;
+            });
+            let nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;
+
+            while (
+                selectedWord.letters[nextIndex] &&
+                crosswordState.some(
+                    letterObject =>
+                        letterObject.XPos === selectedWord.letters[nextIndex].XPos &&
+                        letterObject.YPos === selectedWord.letters[nextIndex].YPos
+                )
+            ) {
+                nextIndex++;
+            }
+
+            const nextLetter = selectedWord.letters[nextIndex];
+
+            if (nextLetter) {
+                selectLetterHandler(nextLetter);
+            } else {
+                // Deselect
+                setSelectedLetter(null);
+                setSelectedWord(null);
+            }
+            
+        } else if (e.key === "Backspace" || e.key === "Delete") {
+            let prevIndex = selectedWord.letters.indexOf(selectedLetter) - 1;
+            let prevLetter = selectedWord.letters[prevIndex];
+            let isCurrentLetterFilled = crosswordState.some(
+                letterObject =>
+                    letterObject.XPos === selectedLetter.XPos &&
+                    letterObject.YPos === selectedLetter.YPos
+            )            
+            if(prevLetter && !isCurrentLetterFilled) {
+                selectLetterHandler(prevLetter);
+            } else if (!prevLetter) {
+                return;
+            }
+
+            
+            setCrosswordState(current => {
+
+                // Filter out the current position, to then replace it
+
+                if(isCurrentLetterFilled) {
+                    return current.filter(
+                        letter =>
+                            !(
+                                letter.XPos === selectedLetter.XPos &&
+                                letter.YPos === selectedLetter.YPos
+                            )
+                    );
+                } else {
+                    return current.filter(
+                        letter =>
+                            !(
+                                letter.XPos === selectedWord.letters[prevIndex].XPos &&
+                                letter.YPos === selectedWord.letters[prevIndex].YPos
+                            )
+                    );
+                }
+                
+            });
+        }
+    }
+
     return <div className="crossword">
         <div className="crossword-viewport"
         onPointerDown={handlePointerDown}
@@ -97,16 +211,43 @@ export default function CrosswordPuzzle ({wordObjects}) {
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onWheel={wheelHandler}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
         >
             <div className="cell-container" style={{ 
             transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}>
-                { wordObjects.map(object => {
+                {wordObjects.map(object => {
                     return object.letters.map(letter => {
-                        return (<CrosswordCell xpos={letter.XPos} ypos={letter.YPos} letter={letter.letter}></CrosswordCell>)
-                    })
-                })  
 
-                }
+                        const isSelected =
+                            selectedLetter?.XPos === letter.XPos &&
+                            selectedLetter?.YPos === letter.YPos;
+                        
+                        const isWordSelected = 
+                            selectedWord &&
+                            selectedWord.letters.some(selectedWordLetter => selectedWordLetter === letter);
+
+                        const textLetter = crosswordState.find(
+                            inputLetter =>
+                                inputLetter.XPos === letter.XPos &&
+                                inputLetter.YPos === letter.YPos
+                        ) ?? "";
+
+                        return (
+                            <CrosswordCell
+                                key={letter.XPos + "-" + letter.YPos}
+                                xpos={letter.XPos}
+                                ypos={letter.YPos}
+                                letterObject={letter}
+                                letter={textLetter.letter}
+                                clueNumber={object.letters[0] === letter ? object.clueNumber : ""}
+                                selected={isSelected}
+                                wordSelected={isWordSelected}
+                                callback={selectLetterHandler}
+                            />
+                        );
+                    });
+                })}
             </div>
             
         </div>
