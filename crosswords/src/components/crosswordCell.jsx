@@ -9,7 +9,10 @@ export default function CrosswordCell({letterObject, letter, xpos, ypos, clueNum
                 className={`cell ${wordSelected ? "word-selected-cell" : ""} ${selected ? "selected-cell" : ""}`}
                 onClick={e => callback(letterObject)}
             >
-                <span className="clue-number">{clueNumber ?? ""}</span>
+                {   clueNumber !== "" && (
+                    <span className="clue-number">{clueNumber ?? ""}</span>
+                )}
+                
                 <span className="letter">{letter ?? ""}</span>
             </p>
         </div>
