@@ -1,13 +1,29 @@
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import { useRef } from "react";
 import CrosswordCell from "./crosswordCell";
 
-export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrosswordState}) {
+export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrosswordState, selectedLetterFromClues, selectedLetterDirection}) {
     const [selectedLetter, setSelectedLetter] = useState(null);
-    const [selectedWord, setSelectedWord] = useState(null)
+    const [selectedWord, setSelectedWord] = useState(null);
     const [selectedWordDirection, setSelectedWordDirection] = useState('across');
+    const viewportRef = useRef(null);
+
+    useEffect(() => {
+        if (selectedLetterFromClues) {
+            const word = wordObjects.find(object => {
+                return object.letters.find(letter => {
+                    return letter === selectedLetterFromClues
+                     && object.direction == selectedLetterDirection
+                })
+            })
+            setSelectedLetter(selectedLetterFromClues);
+            setSelectedWord(word);
+            viewportRef.current?.focus();
+        }
+    }, [selectedLetterFromClues, selectedLetterDirection, wordObjects]);
 
     function selectLetterHandler (letter) {
+
         setSelectedLetter(letter)
         let possibleWords = []
         wordObjects.forEach(wordObject => {
@@ -24,7 +40,9 @@ export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrossw
             setSelectedWord(wordObject)
             setSelectedWordDirection(wordObject.direction)
         }
+
     }
+
 
     const [zoom, setZoom] = useState(1)
     const [pan, setPan] = useState({
@@ -115,6 +133,8 @@ export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrossw
     }
 
     function handleKeyDown(e) {
+        console.log("KEYDOWN:", e.key, selectedLetter, selectedWord);
+
         // Ingore if the user has not selected anything yet
         if(!selectedLetter) return;
 
@@ -206,6 +226,7 @@ export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrossw
 
     return <div className="crossword">
         <div className="crossword-viewport"
+        ref={viewportRef}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}

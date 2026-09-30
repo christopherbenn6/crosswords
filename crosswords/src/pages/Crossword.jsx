@@ -7,10 +7,18 @@ import { useState } from "react"
 export default function Crossword({callback, backButtonCallback, wordObjects}) {
     console.log(wordObjects)
     const [crosswordState, setCrosswordState] = useState([])
+    const [selectedLetter, setSelectedLetter] = useState(null)
+    const [selectedLetterDirection, setSelectedLetterDirection] = useState(null)
 
-    function clueClickCallback () {
-
+    function clueClickCallback (direction, clueNumber) {
+        const selectedWordObject = wordObjects.find(object => {
+            return object.clueNumber == clueNumber && object.direction == direction
+        })
+        setSelectedLetter(selectedWordObject.letters[0]);
+        setSelectedLetterDirection(direction)
     }
+
+    console.log(selectedLetter)
 
     function resetDataCallback () {
         setCrosswordState([])
@@ -29,7 +37,7 @@ export default function Crossword({callback, backButtonCallback, wordObjects}) {
  
         {/* flexbox with crossword clues */}
         <div className="crossword-clues-container">
-            <CrosswordPuzzle crosswordState={crosswordState} setCrosswordState={setCrosswordState} wordObjects={wordObjects}></CrosswordPuzzle>
+            <CrosswordPuzzle crosswordState={crosswordState} setCrosswordState={setCrosswordState} wordObjects={wordObjects} selectedLetterFromClues={selectedLetter} selectedLetterDirection={selectedLetterDirection}></CrosswordPuzzle>
             <div className="clues">
                 <Clues clueClickCallback={clueClickCallback} direction="across" wordObjects={wordObjects}></Clues>
                 <Clues clueClickCallback={clueClickCallback} direction="down" wordObjects={wordObjects}></Clues>

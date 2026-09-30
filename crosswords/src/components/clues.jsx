@@ -14,7 +14,7 @@ export default function Clues ({direction, wordObjects, clueClickCallback}) {
                 <ul className="clue-list">
                     { wordObjects.map((wordObject) => {
                         if(wordObject.direction === "across") {
-                            return (<SingleClue clueClickCallback={clueClickCallback} key={wordObjects.indexOf(wordObject)} clue={wordObject.clue} number={wordObject.clueNumber}></SingleClue>)
+                            return (<SingleClue clueClickCallback={clueClickCallback} key={wordObjects.indexOf(wordObject)} direction={"across"} clue={wordObject.clue} number={wordObject.clueNumber}></SingleClue>)
                         }
                     })}
                 </ul>
@@ -31,7 +31,7 @@ export default function Clues ({direction, wordObjects, clueClickCallback}) {
                 <ul className="clue-list">
                 {wordObjects.map((wordObject) => {
                     if(wordObject.direction === "down") {
-                        return (<SingleClue clueClickCallback={clueClickCallback} key={wordObjects.indexOf(wordObject)} clue={wordObject.clue} number={wordObject.clueNumber}></SingleClue>)                 
+                        return (<SingleClue clueClickCallback={clueClickCallback} key={wordObjects.indexOf(wordObject)}  direction={"down"} clue={wordObject.clue} number={wordObject.clueNumber}></SingleClue>)                 
                     }
                 })}
                 </ul>
