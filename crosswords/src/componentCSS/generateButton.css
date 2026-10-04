@@ -4,6 +4,7 @@
     max-width: 350px;
     height: 20px;
     cursor: pointer;
+        z-index: 100;
 }
 
 .generate {
@@ -68,6 +69,7 @@
 
 .generate-settings {
     color: var(--off-white);
+    background-color: var(--dark-800);
     border: 1px solid var(--teal-100);
     border-radius: 0 0 1rem 1rem;
     padding: 1rem;
@@ -88,7 +90,7 @@
 .generate-settings>div>p {
     text-align: left;
     white-space: nowrap;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .generate-settings input {

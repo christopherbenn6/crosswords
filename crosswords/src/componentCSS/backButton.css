@@ -12,6 +12,7 @@
   --teal-100: #0cffdf;
   --teal-300: #08d2c4;
   --teal-500: #1D9D92;
+  --teal-600: #093c38;
   --teal-800: #062724;
 
   --button-gradient: linear-gradient(270deg, #08d2c4, #0cffdf);
@@ -22,13 +23,13 @@
 }
 
 .back-button {
-    background-color: var(--teal-800);
+    background-color: var(--dark-600);
+     border: 1px solid var(--dark-200);
     color: var(--off-white);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     transition: all 0.5s ease;
-    border: 1px solid var(--teal-300);
 }
 
 .back-button:hover {

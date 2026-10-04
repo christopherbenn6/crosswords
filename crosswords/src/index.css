@@ -11,6 +11,7 @@
   --teal-100: #0cffdf;
   --teal-300: #08d2c4;
   --teal-500: #1D9D92;
+  --teal-600: #093c38;
   --teal-800: #062724;
 
   --button-gradient: linear-gradient(270deg, #08d2c4, #0cffdf);
@@ -62,12 +63,32 @@ h2 {
 
 .crossword-main h1 {
   font-size: clamp(1.75rem, 1.438rem + 1.563vi, 3rem);
-  margin-top: -0.5rem;
+  margin-top: 0.5rem;
   white-space: nowrap;
 }
 
-.back-button {
+@media screen and (width > 700px) {
+  .crossword-main h1 {
+      margin-top: -0.5rem;
+  }
+}
 
+.success-message {
+  background: var(--button-gradient);
+  border: 1px solid var(--teal-100);
+  color: var(--off-black);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  padding: 2rem 1rem;
+  justify-content: space-between;
+  text-align: left;
+
+  transition: all 0.5s ease;
+}
+
+.success-message p {
+  font-size: 1.25rem;
 }
 
 .banner-row {
@@ -322,9 +343,12 @@ h2 {
 
 .crossword-top-flex {
   display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
   font-size: 1.25rem;
 }
 
@@ -339,11 +363,20 @@ h2 {
   color: var(--teal-100);
 }
 
+.crossword-top-numbers {
+  background-color: var(--teal-600);
+  border: 1px solid var(--teal-300);
+  border-radius: 100%;
+  width: 32px;
+  text-align: center;
+}
+
 @media screen and (width > 700px) {
   .crossword-top {
     text-align: left;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .crossword-top-flex {
