@@ -2,7 +2,7 @@ import { use, useState, useEffect } from "react";
 import { useRef } from "react";
 import CrosswordCell from "./crosswordCell";
 
-export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrosswordState, selectedLetterFromClues, selectedLetterDirection}) {
+export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswordState, setCrosswordState, selectedLetterFromClues, selectedLetterDirection}) {
     const [selectedLetter, setSelectedLetter] = useState(null);
     const [selectedWord, setSelectedWord] = useState(null);
     const [selectedWordDirection, setSelectedWordDirection] = useState('across');
@@ -133,7 +133,6 @@ export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrossw
     }
 
     function handleKeyDown(e) {
-        console.log("KEYDOWN:", e.key, selectedLetter, selectedWord);
 
         // Ingore if the user has not selected anything yet
         if(!selectedLetter) return;
@@ -157,7 +156,7 @@ export default function CrosswordPuzzle ({wordObjects, crosswordState, setCrossw
                     YPos: selectedLetter.YPos,
                     letter: e.key.toUpperCase()
                 });
-
+                
                 return newState;
             });
             let nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;

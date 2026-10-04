@@ -26,10 +26,14 @@ body {
 }
 
 main {
-  max-width: 1600px;
+  max-width: 1400px;
   padding: clamp(4rem, 2.72rem + 6.4vi, 8rem) 1rem;
   margin: 0 auto !important;
   text-align: center;
+}
+
+.crossword-main {
+    padding: clamp(2rem, 1.5rem + 2.5vi, 4rem) 1rem;
 }
 
 h1,
@@ -54,6 +58,16 @@ h1 span {
 
 h2 {
   font-size: 2rem;
+}
+
+.crossword-main h1 {
+  font-size: clamp(1.75rem, 1.438rem + 1.563vi, 3rem);
+  margin-top: -0.5rem;
+  white-space: nowrap;
+}
+
+.back-button {
+
 }
 
 .banner-row {
@@ -300,4 +314,39 @@ h2 {
   position: absolute;
 
   top: 0px;
+}
+
+.crossword-top {
+  padding-bottom: 1rem;
+}
+
+.crossword-top-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.single-crossword-top-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.single-crossword-top-flex svg {
+  width: 30px;
+  color: var(--teal-100);
+}
+
+@media screen and (width > 700px) {
+  .crossword-top {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .crossword-top-flex {
+    justify-content: unset;
+  }
 }

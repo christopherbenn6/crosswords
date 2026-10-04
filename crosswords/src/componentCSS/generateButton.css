@@ -52,7 +52,7 @@
 }
 
 .generate-button svg {
-    max-width: 3rem;
+    max-width: clamp(1.75rem, 1.438rem + 1.563vi, 3rem);
     height: auto;
 }
 
