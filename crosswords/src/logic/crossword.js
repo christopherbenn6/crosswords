@@ -46,8 +46,9 @@ function getRandomWordObject(difficulty, crosswordStateWords, gridSize) {
 
     // No word has been added yet
     if(crosswordStateWords.length === 0) {
-        let word = getRandomWordFromArray(words);
-        let clue = getClue(words, word)
+        let word = getRandomWordFromArray(words[difficulty]);
+        console.log(word)
+        let clue = getClue(words[difficulty], word)
         return createFirstWordObject(word, gridSize, clue)
     }
 
@@ -61,7 +62,7 @@ function getRandomWordObject(difficulty, crosswordStateWords, gridSize) {
         const randLetter = allLetters[getRandomRange(0, allLetters.length - 1)]
 
         // Filter the words that contain the random letter
-        const wordsThatContainRandLetter = words.filter(wordObject =>
+        const wordsThatContainRandLetter = words[difficulty].filter(wordObject =>
         wordObject.word
             .toLowerCase()
             .includes(randLetter.letter.toLowerCase())

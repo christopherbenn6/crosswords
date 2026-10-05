@@ -1,113 +1,1668 @@
-[
-  { "word": "APPLE", "clue": "A common red or green fruit" },
-  { "word": "BANANA", "clue": "A long yellow fruit" },
-  { "word": "ORANGE", "clue": "A citrus fruit and a color" },
-  { "word": "PEAR", "clue": "A sweet fruit with a narrow top" },
-  { "word": "GRAPE", "clue": "A small fruit often used to make wine" },
-  { "word": "LEMON", "clue": "A sour yellow citrus fruit" },
-  { "word": "CHERRY", "clue": "A small red fruit with a pit" },
-  { "word": "PEACH", "clue": "A fuzzy fruit with a large pit" },
-  { "word": "MELON", "clue": "A large juicy fruit with a rind" },
-  { "word": "PLUM", "clue": "A small purple fruit" },
-
-  { "word": "DOG", "clue": "A loyal household pet" },
-  { "word": "CAT", "clue": "A pet known for purring" },
-  { "word": "HORSE", "clue": "An animal often ridden by people" },
-  { "word": "COW", "clue": "A farm animal that produces milk" },
-  { "word": "PIG", "clue": "A pink farm animal" },
-  { "word": "SHEEP", "clue": "An animal raised for wool" },
-  { "word": "GOAT", "clue": "A horned farm animal" },
-  { "word": "LION", "clue": "Known as the king of the jungle" },
-  { "word": "TIGER", "clue": "A large striped cat" },
-  { "word": "ELEPHANT", "clue": "The largest land animal" },
-
-  { "word": "TABLE", "clue": "Furniture with a flat top" },
-  { "word": "CHAIR", "clue": "Furniture made for sitting" },
-  { "word": "COUCH", "clue": "A comfortable living room seat" },
-  { "word": "BED", "clue": "Furniture used for sleeping" },
-  { "word": "LAMP", "clue": "Provides light indoors" },
-  { "word": "CLOCK", "clue": "Shows the time" },
-  { "word": "WINDOW", "clue": "Lets light into a room" },
-  { "word": "DOOR", "clue": "Entrance to a room" },
-  { "word": "MIRROR", "clue": "Reflects your image" },
-  { "word": "CARPET", "clue": "Soft floor covering" },
-
-  { "word": "CAR", "clue": "A four-wheeled vehicle" },
-  { "word": "TRUCK", "clue": "A vehicle used to haul cargo" },
-  { "word": "TRAIN", "clue": "Runs on railroad tracks" },
-  { "word": "PLANE", "clue": "Flies through the sky" },
-  { "word": "BOAT", "clue": "Travels on water" },
-  { "word": "BUS", "clue": "Public road transportation" },
-  { "word": "BIKE", "clue": "A two-wheeled vehicle powered by pedals" },
-  { "word": "SHIP", "clue": "A large vessel at sea" },
-  { "word": "SUBWAY", "clue": "An underground train system" },
-  { "word": "HELICOPTER", "clue": "Aircraft with spinning blades" },
-
-  { "word": "SCHOOL", "clue": "A place where students learn" },
-  { "word": "BOOK", "clue": "A collection of printed pages" },
-  { "word": "PENCIL", "clue": "Used for writing and drawing" },
-  { "word": "PAPER", "clue": "Used for writing on" },
-  { "word": "TEACHER", "clue": "Someone who educates students" },
-  { "word": "STUDENT", "clue": "A person who attends school" },
-  { "word": "LESSON", "clue": "A unit of learning" },
-  { "word": "HOMEWORK", "clue": "School work done at home" },
-  { "word": "ERASER", "clue": "Removes pencil marks" },
-  { "word": "BACKPACK", "clue": "Carries books and supplies" },
-
-  { "word": "SUN", "clue": "The star at the center of our solar system" },
-  { "word": "MOON", "clue": "Earth's natural satellite" },
-  { "word": "STAR", "clue": "A bright object in the night sky" },
-  { "word": "CLOUD", "clue": "Visible mass of water vapor" },
-  { "word": "RAIN", "clue": "Water falling from the sky" },
-  { "word": "SNOW", "clue": "Frozen precipitation" },
-  { "word": "WIND", "clue": "Moving air" },
-  { "word": "RIVER", "clue": "A natural flowing body of water" },
-  { "word": "OCEAN", "clue": "The largest body of salt water" },
-  { "word": "MOUNTAIN", "clue": "A very high natural landform" },
-
-  { "word": "RED", "clue": "The color of many apples" },
-  { "word": "BLUE", "clue": "The color of a clear daytime sky" },
-  { "word": "GREEN", "clue": "The color of grass" },
-  { "word": "YELLOW", "clue": "The color of bananas" },
-  { "word": "PURPLE", "clue": "A mix of red and blue" },
-  { "word": "BLACK", "clue": "The darkest color" },
-  { "word": "WHITE", "clue": "The color of fresh snow" },
-  { "word": "PINK", "clue": "A light shade of red" },
-  { "word": "BROWN", "clue": "The color of chocolate" },
-  { "word": "GRAY", "clue": "A color between black and white" },
-
-  { "word": "BREAD", "clue": "A baked food made from flour" },
-  { "word": "CHEESE", "clue": "A dairy food often on pizza" },
-  { "word": "MILK", "clue": "A white dairy drink" },
-  { "word": "EGG", "clue": "Often eaten for breakfast" },
-  { "word": "BUTTER", "clue": "Spread on toast" },
-  { "word": "RICE", "clue": "A common grain eaten worldwide" },
-  { "word": "PASTA", "clue": "Italian noodles" },
-  { "word": "PIZZA", "clue": "Popular food with crust and cheese" },
-  { "word": "SOUP", "clue": "A warm liquid meal" },
-  { "word": "COOKIE", "clue": "A sweet baked treat" },
-
-  { "word": "MUSIC", "clue": "Organized sound and rhythm" },
-  { "word": "GUITAR", "clue": "A stringed musical instrument" },
-  { "word": "PIANO", "clue": "Keyboard musical instrument" },
-  { "word": "DRUM", "clue": "Played by striking with sticks or hands" },
-  { "word": "SONG", "clue": "Music with lyrics" },
-  { "word": "DANCE", "clue": "Moving to music" },
-  { "word": "MOVIE", "clue": "A film shown on a screen" },
-  { "word": "ACTOR", "clue": "Performs in films or plays" },
-  { "word": "PAINT", "clue": "Used to add color to a surface" },
-  { "word": "CAMERA", "clue": "Used to take photographs" },
-
-  { "word": "HAPPY", "clue": "Feeling joy" },
-  { "word": "SAD", "clue": "Feeling unhappy" },
-  { "word": "FAST", "clue": "Moving quickly" },
-  { "word": "SLOW", "clue": "Not moving quickly" },
-  { "word": "HOT", "clue": "Having a high temperature" },
-  { "word": "COLD", "clue": "Having a low temperature" },
-  { "word": "BIG", "clue": "Large in size" },
-  { "word": "SMALL", "clue": "Little in size" },
-  { "word": "LIGHT", "clue": "Opposite of dark" },
-  { "word": "DARK", "clue": "Opposite of light" },
-
-  { "word": "XYLOPHONE", "clue": "A musical percussion instrument made of tuned wooden bars struck by mallets" }
-]
+{
+  "1": [
+    {
+      "word": "APPLE",
+      "clue": "A common red or green fruit"
+    },
+    {
+      "word": "BANANA",
+      "clue": "A long yellow fruit"
+    },
+    {
+      "word": "ORANGE",
+      "clue": "A citrus fruit and a color"
+    },
+    {
+      "word": "PEAR",
+      "clue": "A sweet fruit with a narrow top"
+    },
+    {
+      "word": "GRAPE",
+      "clue": "A small fruit often used to make wine"
+    },
+    {
+      "word": "LEMON",
+      "clue": "A sour yellow citrus fruit"
+    },
+    {
+      "word": "CHERRY",
+      "clue": "A small red fruit with a pit"
+    },
+    {
+      "word": "PEACH",
+      "clue": "A fuzzy fruit with a large pit"
+    },
+    {
+      "word": "MELON",
+      "clue": "A large juicy fruit with a rind"
+    },
+    {
+      "word": "PLUM",
+      "clue": "A small purple fruit"
+    },
+    {
+      "word": "DOG",
+      "clue": "A loyal household pet"
+    },
+    {
+      "word": "CAT",
+      "clue": "A pet known for purring"
+    },
+    {
+      "word": "HORSE",
+      "clue": "An animal often ridden by people"
+    },
+    {
+      "word": "COW",
+      "clue": "A farm animal that produces milk"
+    },
+    {
+      "word": "PIG",
+      "clue": "A pink farm animal"
+    },
+    {
+      "word": "SHEEP",
+      "clue": "An animal raised for wool"
+    },
+    {
+      "word": "GOAT",
+      "clue": "A horned farm animal"
+    },
+    {
+      "word": "LION",
+      "clue": "Known as the king of the jungle"
+    },
+    {
+      "word": "TIGER",
+      "clue": "A large striped cat"
+    },
+    {
+      "word": "TABLE",
+      "clue": "Furniture with a flat top"
+    },
+    {
+      "word": "CHAIR",
+      "clue": "Furniture made for sitting"
+    },
+    {
+      "word": "COUCH",
+      "clue": "A comfortable living room seat"
+    },
+    {
+      "word": "BED",
+      "clue": "Furniture used for sleeping"
+    },
+    {
+      "word": "LAMP",
+      "clue": "Provides light indoors"
+    },
+    {
+      "word": "CLOCK",
+      "clue": "Shows the time"
+    },
+    {
+      "word": "WINDOW",
+      "clue": "Lets light into a room"
+    },
+    {
+      "word": "DOOR",
+      "clue": "Entrance to a room"
+    },
+    {
+      "word": "MIRROR",
+      "clue": "Reflects your image"
+    },
+    {
+      "word": "CARPET",
+      "clue": "Soft floor covering"
+    },
+    {
+      "word": "CAR",
+      "clue": "A four-wheeled vehicle"
+    },
+    {
+      "word": "TRUCK",
+      "clue": "A vehicle used to haul cargo"
+    },
+    {
+      "word": "TRAIN",
+      "clue": "Runs on railroad tracks"
+    },
+    {
+      "word": "PLANE",
+      "clue": "Flies through the sky"
+    },
+    {
+      "word": "BOAT",
+      "clue": "Travels on water"
+    },
+    {
+      "word": "BUS",
+      "clue": "Public road transportation"
+    },
+    {
+      "word": "BIKE",
+      "clue": "A two-wheeled vehicle powered by pedals"
+    },
+    {
+      "word": "SHIP",
+      "clue": "A large vessel at sea"
+    },
+    {
+      "word": "SCHOOL",
+      "clue": "A place where students learn"
+    },
+    {
+      "word": "BOOK",
+      "clue": "A collection of printed pages"
+    },
+    {
+      "word": "PENCIL",
+      "clue": "Used for writing and drawing"
+    },
+    {
+      "word": "PAPER",
+      "clue": "Used for writing on"
+    },
+    {
+      "word": "TEACHER",
+      "clue": "Someone who educates students"
+    },
+    {
+      "word": "STUDENT",
+      "clue": "A person who attends school"
+    },
+    {
+      "word": "LESSON",
+      "clue": "A unit of learning"
+    },
+    {
+      "word": "ERASER",
+      "clue": "Removes pencil marks"
+    },
+    {
+      "word": "SUN",
+      "clue": "The star at the center of our solar system"
+    },
+    {
+      "word": "MOON",
+      "clue": "Earth's natural satellite"
+    },
+    {
+      "word": "STAR",
+      "clue": "A bright object in the night sky"
+    },
+    {
+      "word": "CLOUD",
+      "clue": "Visible mass of water vapor"
+    },
+    {
+      "word": "RAIN",
+      "clue": "Water falling from the sky"
+    },
+    {
+      "word": "SNOW",
+      "clue": "Frozen precipitation"
+    },
+    {
+      "word": "WIND",
+      "clue": "Moving air"
+    },
+    {
+      "word": "RIVER",
+      "clue": "A natural flowing body of water"
+    },
+    {
+      "word": "OCEAN",
+      "clue": "The largest body of salt water"
+    },
+    {
+      "word": "RED",
+      "clue": "The color of many apples"
+    },
+    {
+      "word": "BLUE",
+      "clue": "The color of a clear daytime sky"
+    },
+    {
+      "word": "GREEN",
+      "clue": "The color of grass"
+    },
+    {
+      "word": "YELLOW",
+      "clue": "The color of bananas"
+    },
+    {
+      "word": "PURPLE",
+      "clue": "A mix of red and blue"
+    },
+    {
+      "word": "BLACK",
+      "clue": "The darkest color"
+    },
+    {
+      "word": "WHITE",
+      "clue": "The color of fresh snow"
+    },
+    {
+      "word": "PINK",
+      "clue": "A light shade of red"
+    },
+    {
+      "word": "BROWN",
+      "clue": "The color of chocolate"
+    },
+    {
+      "word": "GRAY",
+      "clue": "A color between black and white"
+    },
+    {
+      "word": "BREAD",
+      "clue": "A baked food made from flour"
+    },
+    {
+      "word": "CHEESE",
+      "clue": "A dairy food often on pizza"
+    },
+    {
+      "word": "MILK",
+      "clue": "A white dairy drink"
+    },
+    {
+      "word": "EGG",
+      "clue": "Often eaten for breakfast"
+    },
+    {
+      "word": "BUTTER",
+      "clue": "Spread on toast"
+    },
+    {
+      "word": "RICE",
+      "clue": "A common grain eaten worldwide"
+    },
+    {
+      "word": "PASTA",
+      "clue": "Italian noodles"
+    },
+    {
+      "word": "PIZZA",
+      "clue": "Popular food with crust and cheese"
+    },
+    {
+      "word": "SOUP",
+      "clue": "A warm liquid meal"
+    },
+    {
+      "word": "COOKIE",
+      "clue": "A sweet baked treat"
+    },
+    {
+      "word": "MUSIC",
+      "clue": "Organized sound and rhythm"
+    },
+    {
+      "word": "GUITAR",
+      "clue": "A stringed musical instrument"
+    },
+    {
+      "word": "PIANO",
+      "clue": "Keyboard musical instrument"
+    },
+    {
+      "word": "DRUM",
+      "clue": "Played by striking with sticks or hands"
+    },
+    {
+      "word": "SONG",
+      "clue": "Music with lyrics"
+    },
+    {
+      "word": "DANCE",
+      "clue": "Moving to music"
+    },
+    {
+      "word": "MOVIE",
+      "clue": "A film shown on a screen"
+    },
+    {
+      "word": "ACTOR",
+      "clue": "Performs in films or plays"
+    },
+    {
+      "word": "PAINT",
+      "clue": "Used to add color to a surface"
+    },
+    {
+      "word": "CAMERA",
+      "clue": "Used to take photographs"
+    },
+    {
+      "word": "HAPPY",
+      "clue": "Feeling joy"
+    },
+    {
+      "word": "SAD",
+      "clue": "Feeling unhappy"
+    },
+    {
+      "word": "FAST",
+      "clue": "Moving quickly"
+    },
+    {
+      "word": "SLOW",
+      "clue": "Not moving quickly"
+    },
+    {
+      "word": "HOT",
+      "clue": "Having a high temperature"
+    },
+    {
+      "word": "COLD",
+      "clue": "Having a low temperature"
+    },
+    {
+      "word": "BIG",
+      "clue": "Large in size"
+    },
+    {
+      "word": "SMALL",
+      "clue": "Little in size"
+    },
+    {
+      "word": "LIGHT",
+      "clue": "Opposite of dark"
+    },
+    {
+      "word": "DARK",
+      "clue": "Opposite of light"
+    }
+  ],
+    "2": [
+        {
+        "word": "ABUNDANCE",
+        "clue": "A large quantity or plentiful supply of something"
+    },
+    {
+        "word": "ADVENTURE",
+        "clue": "An exciting or unusual experience"
+    },
+    {
+        "word": "AMBITION",
+        "clue": "A strong desire to achieve something"
+    },
+    {
+        "word": "ANCIENT",
+        "clue": "Belonging to a very distant past"
+    },
+    {
+        "word": "APPROACH",
+        "clue": "A way of dealing with or handling something"
+    },
+    {
+        "word": "ARTIFACT",
+        "clue": "An object made by humans, especially one of historical interest"
+    },
+    {
+        "word": "ATMOSPHERE",
+        "clue": "The layer of gases surrounding a planet"
+    },
+    {
+        "word": "BEAUTIFUL",
+        "clue": "Pleasant or attractive to look at"
+    },
+    {
+        "word": "BEGINNING",
+        "clue": "The point at which something starts"
+    },
+    {
+        "word": "BOUNDARY",
+        "clue": "A line or limit that marks the edge of something"
+    },
+    {
+        "word": "CELEBRATE",
+        "clue": "To mark a special occasion with festivities"
+    },
+    {
+        "word": "CHALLENGE",
+        "clue": "A difficult task or situation that tests ability"
+    },
+    {
+        "word": "CHAMPION",
+        "clue": "A person who has defeated all competitors in a competition"
+    },
+    {
+        "word": "CIRCUMSTANCE",
+        "clue": "A fact or condition affecting a situation"
+    },
+    {
+        "word": "COMPASSION",
+        "clue": "Sympathy and concern for the suffering of others"
+    },
+    {
+        "word": "CONFIDENCE",
+        "clue": "A feeling of trust in one's abilities or qualities"
+    },
+    {
+        "word": "CONNECTION",
+        "clue": "A relationship or link between two or more things"
+    },
+    {
+        "word": "CREATIVE",
+        "clue": "Having the ability to produce original ideas or work"
+    },
+    {
+        "word": "CURIOSITY",
+        "clue": "A strong desire to learn or know something"
+    },
+    {
+        "word": "DISCOVERY",
+        "clue": "Something found or learned for the first time"
+    },
+    {
+        "word": "DISTANCE",
+        "clue": "The amount of space between two points"
+    },
+    {
+        "word": "EDUCATION",
+        "clue": "The process of gaining knowledge or skills"
+    },
+    {
+        "word": "ELEVATION",
+        "clue": "The height of something above a particular level"
+    },
+    {
+        "word": "ENCOUNTER",
+        "clue": "An unexpected meeting or experience"
+    },
+    {
+        "word": "ENVIRONMENT",
+        "clue": "The surroundings or conditions in which something exists"
+    },
+    {
+        "word": "ESSENTIAL",
+        "clue": "Absolutely necessary or extremely important"
+    },
+    {
+        "word": "EXPERIENCE",
+        "clue": "Knowledge or skill gained through participation or observation"
+    },
+    {
+        "word": "FASCINATE",
+        "clue": "To attract and hold someone's attention intensely"
+    },
+    {
+        "word": "FREQUENCY",
+        "clue": "The rate at which something occurs"
+    },
+    {
+        "word": "GENEROUS",
+        "clue": "Willing to give freely or abundantly"
+    },
+    {
+        "word": "HARMONY",
+        "clue": "A pleasing combination of different elements"
+    },
+    {
+        "word": "HESITATION",
+        "clue": "A pause caused by uncertainty or indecision"
+    },
+    {
+        "word": "IMAGINATION",
+        "clue": "The ability to form ideas or pictures in the mind"
+    },
+    {
+        "word": "IMPORTANT",
+        "clue": "Having great significance or value"
+    },
+    {
+        "word": "INDEPENDENT",
+        "clue": "Not controlled or influenced by another"
+    },
+    {
+        "word": "INSPIRATION",
+        "clue": "A feeling or idea that encourages creativity or action"
+    },
+    {
+        "word": "KNOWLEDGE",
+        "clue": "Information and understanding gained through learning"
+    },
+    {
+        "word": "LANDSCAPE",
+        "clue": "The visible features of a particular area of land"
+    },
+    {
+        "word": "MYSTERIOUS",
+        "clue": "Difficult to understand, explain, or identify"
+    },
+    {
+        "word": "OPPORTUNITY",
+        "clue": "A favorable chance for advancement or success"
+    },
+    {
+        "word": "PERSEVERE",
+        "clue": "To continue despite difficulty or opposition"
+    },
+    {
+        "word": "PERSPECTIVE",
+        "clue": "A particular way of viewing or understanding something"
+    },
+    {
+        "word": "PHENOMENON",
+        "clue": "An observable event or fact"
+    },
+    {
+        "word": "PRIORITY",
+        "clue": "Something regarded as more important than other things"
+    },
+    {
+        "word": "REFLECTION",
+        "clue": "An image produced by light bouncing off a surface"
+    },
+    {
+        "word": "SIGNIFICANT",
+        "clue": "Important or worthy of attention"
+    },
+    {
+        "word": "SOLITUDE",
+        "clue": "The state of being alone"
+    },
+    {
+        "word": "TRADITION",
+        "clue": "A custom or belief passed down through generations"
+    },
+    {
+        "word": "TRANSFORM",
+        "clue": "To change something significantly in form or appearance"
+    },
+    {
+        "word": "UNEXPECTED",
+        "clue": "Not anticipated or predicted"
+    },
+    {
+        "word": "WONDERFUL",
+        "clue": "Extremely good, impressive, or enjoyable"
+    },
+    {
+      "word": "ANCHOR",
+      "clue": "A heavy device lowered from a vessel to keep it from drifting"
+    },
+    {
+      "word": "BALCONY",
+      "clue": "An elevated platform projecting from the side of a building"
+    },
+    {
+      "word": "BICYCLE",
+      "clue": "A pedal-powered vehicle whose two wheels follow one another"
+    },
+    {
+      "word": "BLANKET",
+      "clue": "A textile covering commonly associated with warmth and sleep"
+    },
+    {
+      "word": "BRIDGE",
+      "clue": "A structure designed to carry people or vehicles across an obstacle"
+    },
+    {
+      "word": "CABINET",
+      "clue": "An enclosed storage unit, or a group of senior government officials"
+    },
+    {
+      "word": "CANDLE",
+      "clue": "A wax cylinder that consumes a wick to produce illumination"
+    },
+    {
+      "word": "CANYON",
+      "clue": "A deep geological feature commonly carved by a river"
+    },
+    {
+      "word": "CAPTAIN",
+      "clue": "A rank associated with command aboard a vessel"
+    },
+    {
+      "word": "CARROT",
+      "clue": "An orange root vegetable whose leafy top grows above ground"
+    },
+    {
+      "word": "CASTLE",
+      "clue": "A fortified residence associated with medieval nobility"
+    },
+    {
+      "word": "CEILING",
+      "clue": "The overhead boundary of an interior space"
+    },
+    {
+      "word": "CIRCUS",
+      "clue": "A traveling spectacle traditionally featuring acrobats, clowns, and ring acts"
+    },
+    {
+      "word": "CLOSET",
+      "clue": "A recessed or enclosed space commonly devoted to storage"
+    },
+    {
+      "word": "COMPASS",
+      "clue": "A navigational instrument whose needle responds to Earth's magnetic field"
+    },
+    {
+      "word": "CRYSTAL",
+      "clue": "A solid whose constituent particles form an ordered repeating structure"
+    },
+    {
+      "word": "DESERT",
+      "clue": "A biome defined more by scarce precipitation than by heat"
+    },
+    {
+      "word": "DIAMOND",
+      "clue": "A gemstone composed of carbon arranged in a particularly rigid lattice"
+    },
+    {
+      "word": "DINNER",
+      "clue": "The meal traditionally associated with the latter part of the day"
+    },
+    {
+      "word": "DOLPHIN",
+      "clue": "A marine mammal known for echolocation and complex social behavior"
+    },
+    {
+      "word": "DRAGON",
+      "clue": "A legendary creature frequently depicted as a reptile capable of flight"
+    },
+    {
+      "word": "ECLIPSE",
+      "clue": "A celestial alignment in which one body temporarily obscures another"
+    },
+    {
+      "word": "ENGINE",
+      "clue": "A machine that transforms an energy source into mechanical work"
+    },
+    {
+      "word": "FARMER",
+      "clue": "A person whose livelihood may depend on cultivating land or raising livestock"
+    },
+    {
+      "word": "FESTIVAL",
+      "clue": "A recurring public celebration centered around a particular theme or tradition"
+    },
+    {
+      "word": "FOREST",
+      "clue": "A terrestrial ecosystem in which trees form a dominant component"
+    },
+    {
+      "word": "FOUNTAIN",
+      "clue": "An ornamental feature in which water is deliberately circulated or projected"
+    },
+    {
+      "word": "GARDEN",
+      "clue": "A cultivated area intended for growing plants"
+    },
+    {
+      "word": "HAMMER",
+      "clue": "A hand tool whose head delivers force through a handle"
+    },
+    {
+      "word": "HARBOR",
+      "clue": "A sheltered coastal area where vessels can seek refuge"
+    },
+    {
+      "word": "HOLIDAY",
+      "clue": "A day set aside for observance, celebration, or leisure"
+    },
+    {
+      "word": "ISLAND",
+      "clue": "A landform surrounded by water but smaller than a continent"
+    },
+    {
+      "word": "JACKET",
+      "clue": "An outer garment generally shorter than a traditional coat"
+    },
+    {
+      "word": "JOURNAL",
+      "clue": "A dated personal record, or a periodical publication of scholarship"
+    },
+    {
+      "word": "JUNGLE",
+      "clue": "A dense tropical environment characterized by abundant vegetation"
+    },
+    {
+      "word": "KITCHEN",
+      "clue": "The part of a home organized around food preparation"
+    },
+    {
+      "word": "LADDER",
+      "clue": "A climbing apparatus consisting of repeated horizontal steps or rungs"
+    },
+    {
+      "word": "LIBRARY",
+      "clue": "An institution organized around the collection and circulation of information"
+    },
+    {
+      "word": "LIGHTHOUSE",
+      "clue": "A coastal structure whose illumination serves a navigational purpose"
+    },
+    {
+      "word": "MARKET",
+      "clue": "A place or system in which buyers and sellers exchange goods or services"
+    },
+    {
+      "word": "MEDICINE",
+      "clue": "A substance or treatment intended to prevent or address disease"
+    },
+    {
+      "word": "MONKEY",
+      "clue": "A primate that, unlike apes, generally possesses a tail"
+    },
+    {
+      "word": "NECKLACE",
+      "clue": "An ornament designed to encircle the neck"
+    },
+    {
+      "word": "NOTEBOOK",
+      "clue": "A bound collection of blank or ruled pages intended for writing"
+    },
+    {
+      "word": "PAINTING",
+      "clue": "A visual artwork created by applying pigment to a surface"
+    },
+    {
+      "word": "PILLOW",
+      "clue": "A padded support commonly positioned beneath the head"
+    },
+    {
+      "word": "PIRATE",
+      "clue": "A seafarer who engages in robbery or violence against vessels"
+    },
+    {
+      "word": "PLANET",
+      "clue": "A celestial body that orbits a star and dominates its orbital neighborhood"
+    },
+    {
+      "word": "POCKET",
+      "clue": "A small sewn compartment found in many garments"
+    },
+    {
+      "word": "PRINTER",
+      "clue": "A peripheral device that converts digital information into physical output"
+    },
+    {
+      "word": "RAINBOW",
+      "clue": "An optical arc produced when sunlight interacts with suspended water droplets"
+    },
+    {
+      "word": "ROCKET",
+      "clue": "A vehicle propelled by expelling mass, allowing it to operate without atmospheric support"
+    },
+    {
+      "word": "SANDWICH",
+      "clue": "A meal assembled by placing a filling between pieces of bread"
+    },
+    {
+      "word": "SCISSORS",
+      "clue": "A cutting implement operated by crossing two sharpened blades"
+    },
+    {
+      "word": "SHADOW",
+      "clue": "A region where illumination is reduced because an object obstructs a light source"
+    },
+    {
+      "word": "SILVER",
+      "clue": "A precious metal represented by the chemical symbol Ag"
+    },
+    {
+      "word": "SOLDIER",
+      "clue": "A member of an organized armed force"
+    },
+    {
+      "word": "SPIDER",
+      "clue": "An arachnid distinguished from insects by having eight legs"
+    },
+    {
+      "word": "STADIUM",
+      "clue": "A large venue designed primarily for spectators of competitive events"
+    },
+    {
+      "word": "SUNSET",
+      "clue": "The apparent disappearance of the Sun caused by Earth's rotation"
+    },
+    {
+      "word": "TELEPHONE",
+      "clue": "A communication device whose original purpose was transmitting speech electrically"
+    },
+    {
+      "word": "THUNDER",
+      "clue": "The acoustic consequence of the rapid expansion of air heated by lightning"
+    },
+    {
+      "word": "TORNADO",
+      "clue": "A violently rotating column of air extending from a storm toward the ground"
+    },
+    {
+      "word": "TREASURE",
+      "clue": "A collection of valuables, especially one imagined as hidden or discovered"
+    },
+    {
+      "word": "UMBRELLA",
+      "clue": "A collapsible canopy primarily designed to intercept precipitation"
+    },
+    {
+      "word": "VILLAGE",
+      "clue": "A settlement generally smaller than a town and larger than a hamlet"
+    },
+    {
+      "word": "VOLCANO",
+      "clue": "A geological opening through which magma and volcanic gases may escape"
+    },
+    {
+      "word": "WALLET",
+      "clue": "A compact holder traditionally used for currency and identification"
+    },
+    {
+      "word": "WATERFALL",
+      "clue": "A section of a river where water descends abruptly over a drop"
+    },
+    {
+      "word": "WHISPER",
+      "clue": "Speech produced with little or no vocal-cord vibration"
+    },
+    {
+      "word": "WINDOWSILL",
+      "clue": "The horizontal ledge forming the lower part of a window opening"
+    },
+    {
+      "word": "WOODLAND",
+      "clue": "A habitat dominated by trees but generally less dense than a forest"
+    },
+    {
+      "word": "AIRPORT",
+      "clue": "A transportation facility organized around the arrival and departure of aircraft"
+    },
+    {
+      "word": "BASKETBALL",
+      "clue": "A team sport in which possession is advanced toward an elevated circular target"
+    },
+    {
+      "word": "BASEBALL",
+      "clue": "A bat-and-ball game organized around innings, bases, and outs"
+    },
+    {
+      "word": "FOOTBALL",
+      "clue": "A sport whose North American form revolves around advancing an oval ball"
+    },
+    {
+      "word": "HOCKEY",
+      "clue": "A game in which players maneuver a small disk across a playing surface with sticks"
+    },
+    {
+      "word": "TENNIS",
+      "clue": "A racket sport in which players attempt to keep a ball within marked boundaries"
+    },
+    {
+      "word": "VIOLIN",
+      "clue": "A bowed string instrument occupying the highest standard orchestral violin-family register"
+    },
+    {
+      "word": "COMPASS",
+      "clue": "A directional instrument whose behavior can reveal the influence of Earth's magnetic field"
+    },
+    {
+      "word": "BACKPACK",
+      "clue": "A container designed to distribute carried belongings across the shoulders"
+    },
+    {
+      "word": "SUBWAY",
+      "clue": "An urban rail system whose routes commonly run beneath a city's surface"
+    },
+    {
+      "word": "ELEPHANT",
+      "clue": "A massive land mammal distinguished by its trunk and tusks"
+    },
+    {
+      "word": "MOUNTAIN",
+      "clue": "A prominent natural elevation rising substantially above its surroundings"
+    }
+  ],
+  "3": [
+    {
+      "word": "XYLOPHONE",
+      "clue": "A pitched percussion instrument whose sound comes from struck wooden bars"
+    },
+    {
+      "word": "HELICOPTER",
+      "clue": "A rotorcraft capable of generating lift from rotating airfoils above its fuselage"
+    },
+    {
+      "word": "ASTRONOMY",
+      "clue": "The observational and theoretical study of objects and phenomena beyond Earth's atmosphere"
+    },
+    {
+      "word": "ARCHITECTURE",
+      "clue": "The discipline concerned with the conception and organization of habitable structures"
+    },
+    {
+      "word": "ATMOSPHERE",
+      "clue": "A gaseous envelope whose composition and circulation influence a planet's surface conditions"
+    },
+    {
+      "word": "BIBLIOGRAPHY",
+      "clue": "A systematic record of works consulted or cited in scholarly research"
+    },
+    {
+      "word": "BIODIVERSITY",
+      "clue": "The variability of life considered across genes, species, and ecosystems"
+    },
+    {
+      "word": "CATASTROPHE",
+      "clue": "An event whose consequences produce widespread destruction or upheaval"
+    },
+    {
+      "word": "CHRONOLOGY",
+      "clue": "The ordering of events according to their temporal relationship"
+    },
+    {
+      "word": "CIRCUMFERENCE",
+      "clue": "The one-dimensional boundary enclosing a circle"
+    },
+    {
+      "word": "CONSTELLATION",
+      "clue": "A formally recognized region of the celestial sphere, often associated with a familiar stellar pattern"
+    },
+    {
+      "word": "CONTINENT",
+      "clue": "A major division of Earth's landmass traditionally recognized in geographic models"
+    },
+    {
+      "word": "CRYPTOGRAPHY",
+      "clue": "The discipline concerned with secure communication in the presence of adversaries"
+    },
+    {
+      "word": "DEMOCRACY",
+      "clue": "A political system in which authority is ultimately derived from the governed"
+    },
+    {
+      "word": "ECOSYSTEM",
+      "clue": "A functional unit consisting of organisms interacting with both one another and their physical surroundings"
+    },
+    {
+      "word": "ELECTRICITY",
+      "clue": "A broad physical phenomenon associated with electric charge, fields, and current"
+    },
+    {
+      "word": "ENTOMOLOGY",
+      "clue": "The branch of zoology devoted to insects"
+    },
+    {
+      "word": "EXPERIMENT",
+      "clue": "A controlled procedure intended to test a prediction or investigate a causal relationship"
+    },
+    {
+      "word": "EXTRAORDINARY",
+      "clue": "Markedly outside what is usual, expected, or ordinary"
+    },
+    {
+      "word": "GEOGRAPHY",
+      "clue": "The discipline concerned with spatial relationships among people, places, and environments"
+    },
+    {
+      "word": "GRAVITY",
+      "clue": "The interaction responsible for the mutual attraction of bodies possessing mass"
+    },
+    {
+      "word": "HYPOTHESIS",
+      "clue": "A provisional proposition formulated so that its implications can be investigated"
+    },
+    {
+      "word": "IMAGINATION",
+      "clue": "The cognitive capacity to construct representations not presently supplied by the senses"
+    },
+    {
+      "word": "INSTRUMENT",
+      "clue": "An implement designed to perform a specialized function, especially in scientific or musical contexts"
+    },
+    {
+      "word": "INTERNATIONAL",
+      "clue": "Extending across or involving the boundaries of sovereign states"
+    },
+    {
+      "word": "LABORATORY",
+      "clue": "A controlled setting equipped for empirical investigation and experimentation"
+    },
+    {
+      "word": "LITERATURE",
+      "clue": "Written or oral works regarded primarily through their artistic or expressive qualities"
+    },
+    {
+      "word": "MAGNITUDE",
+      "clue": "A quantitative measure of size, extent, intensity, or importance"
+    },
+    {
+      "word": "METEOROLOGY",
+      "clue": "The atmospheric science concerned with weather and its short-term behavior"
+    },
+    {
+      "word": "MICROSCOPIC",
+      "clue": "Existing at a scale requiring magnification for ordinary visual examination"
+    },
+    {
+      "word": "MIGRATION",
+      "clue": "A directional movement between regions that may recur seasonally or across generations"
+    },
+    {
+      "word": "MYSTERIOUS",
+      "clue": "Characterized by circumstances whose causes or meaning remain concealed"
+    },
+    {
+      "word": "NAVIGATION",
+      "clue": "The determination and maintenance of a route from one position to another"
+    },
+    {
+      "word": "OBSERVATION",
+      "clue": "The acquisition of information through systematic attention to phenomena"
+    },
+    {
+      "word": "ORCHESTRA",
+      "clue": "An ensemble in which strings, woodwinds, brass, and percussion commonly appear together"
+    },
+    {
+      "word": "PHOTOGRAPHY",
+      "clue": "The creation of images through the recording of electromagnetic radiation, typically visible light"
+    },
+    {
+      "word": "PHILOSOPHY",
+      "clue": "The systematic examination of questions concerning knowledge, reality, reason, and value"
+    },
+    {
+      "word": "PSYCHOLOGY",
+      "clue": "The scientific discipline concerned with behavior and mental processes"
+    },
+    {
+      "word": "QUICKSILVER",
+      "clue": "The archaic name for a metallic element that remains liquid near room temperature"
+    },
+    {
+      "word": "RENAISSANCE",
+      "clue": "A European intellectual and artistic movement associated with renewed interest in classical antiquity"
+    },
+    {
+      "word": "SPECTACULAR",
+      "clue": "Striking enough to command attention through grandeur, beauty, or dramatic effect"
+    },
+    {
+      "word": "TELESCOPE",
+      "clue": "An optical or radio instrument that gathers radiation to make distant objects easier to study"
+    },
+    {
+      "word": "THERMOMETER",
+      "clue": "An instrument whose measurable physical property varies predictably with temperature"
+    },
+    {
+      "word": "TRANQUILITY",
+      "clue": "A condition characterized by freedom from agitation, disturbance, or turmoil"
+    },
+    {
+      "word": "UNIVERSITY",
+      "clue": "An institution whose primary functions commonly include advanced teaching and research"
+    },
+    {
+      "word": "VEGETATION",
+      "clue": "The collective plant cover characteristic of a particular region or environment"
+    },
+    {
+      "word": "WILDERNESS",
+      "clue": "Land retaining a high degree of natural character with limited human alteration"
+    },
+    {
+      "word": "ARCHAEOLOGY",
+      "clue": "The study of past human societies through their material remains"
+    },
+    {
+      "word": "CARTOGRAPHY",
+      "clue": "The discipline concerned with representing spatial information through maps"
+    },
+    {
+      "word": "COMPLICATED",
+      "clue": "Containing numerous interrelated elements that make analysis or understanding difficult"
+    },
+    {
+      "word": "CONVERSATION",
+      "clue": "A reciprocal exchange of spoken ideas, information, or social interaction"
+    },
+    {
+      "word": "DELICIOUS",
+      "clue": "Particularly pleasing to the palate"
+    },
+    {
+      "word": "DISCOVERY",
+      "clue": "The acquisition of knowledge concerning something previously unknown or unrecognized"
+    },
+    {
+      "word": "ENGINEERING",
+      "clue": "The application of mathematical and scientific principles to the design of useful systems"
+    },
+    {
+      "word": "ENVIRONMENT",
+      "clue": "The collection of external conditions that surround and influence an organism or system"
+    },
+    {
+      "word": "EXPEDITION",
+      "clue": "An organized journey undertaken toward a defined objective, often in unfamiliar territory"
+    },
+    {
+      "word": "FASCINATING",
+      "clue": "Possessing qualities capable of sustaining unusually strong curiosity or attention"
+    },
+    {
+      "word": "INNOVATION",
+      "clue": "The introduction of a novel idea, method, process, or product into practical use"
+    },
+    {
+      "word": "INTELLIGENCE",
+      "clue": "The capacity to acquire knowledge, adapt behavior, and solve unfamiliar problems"
+    },
+    {
+      "word": "PERSEVERANCE",
+      "clue": "The sustained continuation of effort despite obstacles or repeated difficulty"
+    },
+    {
+      "word": "PHOTOGRAPHER",
+      "clue": "A practitioner who creates visual records by controlling exposure to light"
+    },
+    {
+      "word": "RESTAURANT",
+      "clue": "A commercial establishment in which prepared food is offered for consumption"
+    },
+    {
+      "word": "TECHNOLOGY",
+      "clue": "The practical application of accumulated knowledge through tools, techniques, and systems"
+    },
+    {
+      "word": "TRADITIONAL",
+      "clue": "Conforming to practices or conventions transmitted through established custom"
+    },
+    {
+      "word": "TRANSPORTATION",
+      "clue": "The organized movement of people or goods between locations"
+    },
+    {
+      "word": "METAMORPHOSIS",
+      "clue": "A biological transformation in which an organism undergoes a distinct change in body form"
+    },
+    {
+      "word": "PHOTOSYNTHESIS",
+      "clue": "A biochemical process through which light energy is converted into stored chemical energy"
+    },
+    {
+      "word": "THERMODYNAMICS",
+      "clue": "The branch of physics concerned with heat, work, energy, and equilibrium"
+    },
+    {
+      "word": "NEUROSCIENCE",
+      "clue": "The interdisciplinary study of the nervous system and its functions"
+    },
+    {
+      "word": "PALEONTOLOGY",
+      "clue": "The study of ancient life through preserved biological evidence"
+    },
+    {
+      "word": "GEOLOGY",
+      "clue": "The science concerned with Earth's materials, structure, and geological history"
+    },
+    {
+      "word": "QUASAR",
+      "clue": "An extremely luminous active galactic nucleus powered by accretion onto a supermassive black hole"
+    },
+    {
+      "word": "SUPERNOVA",
+      "clue": "A stellar explosion capable of briefly outshining an entire galaxy"
+    },
+    {
+      "word": "CHROMOSOME",
+      "clue": "A DNA-protein structure that packages genetic material within a cell"
+    },
+    {
+      "word": "PERPENDICULAR",
+      "clue": "Describing two lines or planes meeting at a right angle"
+    },
+    {
+      "word": "EQUIVALENT",
+      "clue": "Having the same value, meaning, or effect despite differing in form"
+    },
+    {
+      "word": "AMBIGUOUS",
+      "clue": "Open to multiple plausible interpretations rather than having a single clear meaning"
+    },
+    {
+      "word": "PARADOX",
+      "clue": "A statement or situation that appears self-contradictory while potentially revealing a deeper truth"
+    },
+    {
+      "word": "CONSEQUENCE",
+      "clue": "A result that follows from an action, condition, or preceding event"
+    },
+    {
+      "word": "UNPREDICTABLE",
+      "clue": "Not readily determined in advance from available information"
+    },
+    {
+      "word": "INTRICATE",
+      "clue": "Characterized by many interconnected details or finely arranged parts"
+    },
+    {
+      "word": "SYNTHESIS",
+      "clue": "The combination of separate elements into a coherent whole"
+    },
+    {
+      "word": "QUINTESSENCE",
+      "clue": "The purest or most characteristic embodiment of a quality or concept"
+    },
+    {
+        "word": "ABERRATION",
+        "clue": "A departure from what is normal, expected, or typical"
+    },
+    {
+        "word": "ACQUIESCE",
+        "clue": "To accept something reluctantly but without protest"
+    },
+    {
+        "word": "ALACRITY",
+        "clue": "Cheerful readiness or eagerness"
+    },
+    {
+        "word": "AMBIGUOUS",
+        "clue": "Open to more than one interpretation"
+    },
+    {
+        "word": "ANACHRONISM",
+        "clue": "Something belonging to another period of history"
+    },
+    {
+        "word": "ANTITHESIS",
+        "clue": "A direct contrast or opposition"
+    },
+    {
+        "word": "APOCRYPHAL",
+        "clue": "Of doubtful authenticity, though widely believed"
+    },
+    {
+        "word": "ARCANE",
+        "clue": "Known or understood by very few people"
+    },
+    {
+        "word": "ASSIDUOUS",
+        "clue": "Showing great care, effort, and persistence"
+    },
+    {
+        "word": "AUSTERE",
+        "clue": "Severely simple or lacking decoration"
+    },
+    {
+        "word": "BELLICOSE",
+        "clue": "Demonstrating a willingness to fight"
+    },
+    {
+        "word": "BELLWETHER",
+        "clue": "A person or thing that serves as a leading indicator"
+    },
+    {
+        "word": "BOMBASTIC",
+        "clue": "Using language that is overly grand or impressive"
+    },
+    {
+        "word": "CAPRICIOUS",
+        "clue": "Given to sudden and unpredictable changes"
+    },
+    {
+        "word": "CASTIGATE",
+        "clue": "To reprimand someone severely"
+    },
+    {
+        "word": "CIRCUMSPECT",
+        "clue": "Careful to avoid risks or mistakes"
+    },
+    {
+        "word": "COGENT",
+        "clue": "Clear, logical, and convincing"
+    },
+    {
+        "word": "CONFLAGRATION",
+        "clue": "A large and destructive fire"
+    },
+    {
+        "word": "CONUNDRUM",
+        "clue": "A confusing and difficult problem"
+    },
+    {
+        "word": "CORROBORATE",
+        "clue": "To confirm or support a statement with evidence"
+    },
+    {
+        "word": "DELETERIOUS",
+        "clue": "Causing harm or damage"
+    },
+    {
+        "word": "DEMAGOGUE",
+        "clue": "A political leader who appeals to emotions and prejudices"
+    },
+    {
+        "word": "DENOUEMENT",
+        "clue": "The final resolution of a complicated story"
+    },
+    {
+        "word": "DIAPHANOUS",
+        "clue": "Light, delicate, and almost transparent"
+    },
+    {
+        "word": "DILETTANTE",
+        "clue": "A person with a superficial interest in an area of study"
+    },
+    {
+        "word": "DISCERNING",
+        "clue": "Having the ability to judge things well"
+    },
+    {
+        "word": "DISSEMBLE",
+        "clue": "To conceal one's true motives or feelings"
+    },
+    {
+        "word": "EBULLIENT",
+        "clue": "Cheerful, energetic, and enthusiastic"
+    },
+    {
+        "word": "ECLECTIC",
+        "clue": "Derived from a wide variety of sources or styles"
+    },
+    {
+        "word": "EFFERVESCENT",
+        "clue": "Bubbly or lively in character"
+    },
+    {
+        "word": "EGREGIOUS",
+        "clue": "Outstandingly bad or offensive"
+    },
+    {
+        "word": "ELUCIDATE",
+        "clue": "To make something clearer or easier to understand"
+    },
+    {
+        "word": "ENERVATE",
+        "clue": "To drain someone of energy or vitality"
+    },
+    {
+        "word": "EPHEMERAL",
+        "clue": "Lasting for only a very short time"
+    },
+    {
+        "word": "EQUIVOCAL",
+        "clue": "Open to multiple interpretations or meanings"
+    },
+    {
+        "word": "ERUDITE",
+        "clue": "Having extensive knowledge gained through study"
+    },
+    {
+        "word": "ESOTERIC",
+        "clue": "Intended for or understood by a small specialized group"
+    },
+    {
+        "word": "EXCORIATE",
+        "clue": "To criticize someone or something harshly"
+    },
+    {
+        "word": "EXTRICATE",
+        "clue": "To free someone or something from a difficult situation"
+    },
+    {
+        "word": "FASTIDIOUS",
+        "clue": "Very attentive to detail and accuracy"
+    },
+    {
+        "word": "FECUND",
+        "clue": "Producing many offspring, ideas, or results"
+    },
+    {
+        "word": "GARRULOUS",
+        "clue": "Excessively talkative"
+    },
+    {
+        "word": "GRANDILOQUENT",
+        "clue": "Using language that is pompous or overly elaborate"
+    },
+    {
+        "word": "ICONOCLAST",
+        "clue": "A person who challenges established beliefs or customs"
+    },
+    {
+        "word": "IDIOSYNCRASY",
+        "clue": "A distinctive habit or characteristic"
+    },
+    {
+        "word": "IMPECUNIOUS",
+        "clue": "Having little or no money"
+    },
+    {
+        "word": "INCHOATE",
+        "clue": "Only partly formed or developed"
+    },
+    {
+        "word": "INCULCATE",
+        "clue": "To teach an idea through persistent repetition"
+    },
+    {
+        "word": "INEFFABLE",
+        "clue": "Too great or extraordinary to be expressed in words"
+    },
+    {
+        "word": "INSOUCIANT",
+        "clue": "Showing a casual lack of concern"
+    },
+    {
+        "word": "INTRANSIGENT",
+        "clue": "Unwilling to change one's position or compromise"
+    },
+    {
+        "word": "JUXTAPOSE",
+        "clue": "To place two things side by side for comparison"
+    },
+    {
+        "word": "LACONIC",
+        "clue": "Using very few words"
+    },
+    {
+        "word": "LUGUBRIOUS",
+        "clue": "Looking or sounding mournful and gloomy"
+    },
+    {
+        "word": "MAGNANIMOUS",
+        "clue": "Generous and forgiving toward a rival or enemy"
+    },
+    {
+        "word": "MALEDICTION",
+        "clue": "A curse or expression of hatred"
+    },
+    {
+        "word": "MELLIFLUOUS",
+        "clue": "Pleasantly smooth and musical to hear"
+    },
+    {
+        "word": "METICULOUS",
+        "clue": "Extremely careful and precise"
+    },
+    {
+        "word": "MNEMONIC",
+        "clue": "A device used to aid memory"
+    },
+    {
+        "word": "NEFARIOUS",
+        "clue": "Wicked or criminal in character"
+    },
+    {
+        "word": "NEOLOGISM",
+        "clue": "A newly coined word or expression"
+    },
+    {
+        "word": "OBFUSCATE",
+        "clue": "To make something deliberately unclear"
+    },
+    {
+        "word": "OBSEQUIOUS",
+        "clue": "Excessively eager to please or obey"
+    },
+    {
+        "word": "ONOMATOPOEIA",
+        "clue": "A word that imitates a natural sound"
+    },
+    {
+        "word": "OSTENTATIOUS",
+        "clue": "Designed to attract attention through obvious display"
+    },
+    {
+        "word": "PALIMPSEST",
+        "clue": "A manuscript whose earlier writing has been erased and replaced"
+    },
+    {
+        "word": "PANACEA",
+        "clue": "A supposed solution for every problem"
+    },
+    {
+        "word": "PARSIMONIOUS",
+        "clue": "Extremely unwilling to spend money"
+    },
+    {
+        "word": "PERNICIOUS",
+        "clue": "Having a harmful effect, especially one that develops gradually"
+    },
+    {
+        "word": "PHILISTINE",
+        "clue": "A person indifferent or hostile to culture and the arts"
+    },
+    {
+        "word": "PLATITUDE",
+        "clue": "A stale or overly familiar remark"
+    },
+    {
+        "word": "PLETHORA",
+        "clue": "An excessive amount of something"
+    },
+    {
+        "word": "PREVARICATE",
+        "clue": "To avoid giving a direct answer"
+    },
+    {
+        "word": "PRODIGAL",
+        "clue": "Spending money or resources recklessly"
+    },
+    {
+        "word": "PROSAIC",
+        "clue": "Lacking imagination or excitement"
+    },
+    {
+        "word": "PUERILE",
+        "clue": "Childishly silly or immature"
+    },
+    {
+        "word": "QUERULOUS",
+        "clue": "Habitually complaining or finding fault"
+    },
+    {
+        "word": "RECALCITRANT",
+        "clue": "Resistant to authority or control"
+    },
+    {
+        "word": "RECONDITE",
+        "clue": "Obscure and difficult to understand"
+    },
+    {
+        "word": "REDOLENT",
+        "clue": "Strongly suggestive of a particular smell or atmosphere"
+    },
+    {
+        "word": "SAGACIOUS",
+        "clue": "Having good judgment and practical wisdom"
+    },
+    {
+        "word": "SALUBRIOUS",
+        "clue": "Healthful or beneficial to health"
+    },
+    {
+        "word": "SANGUINE",
+        "clue": "Optimistic or hopeful, especially in a difficult situation"
+    },
+    {
+        "word": "SESQUIPEDALIAN",
+        "clue": "Characterized by using long words"
+    },
+    {
+        "word": "SOLILOQUY",
+        "clue": "A speech in which a character speaks their thoughts aloud"
+    },
+    {
+        "word": "SOPHISTRY",
+        "clue": "A deceptive argument that appears logical"
+    },
+    {
+        "word": "SPURIOUS",
+        "clue": "Not genuine, valid, or authentic"
+    },
+    {
+        "word": "STENTORIAN",
+        "clue": "Extremely loud and powerful in sound"
+    },
+    {
+        "word": "SUPERCILIOUS",
+        "clue": "Behaving as though superior to others"
+    },
+    {
+        "word": "SYCOPHANT",
+        "clue": "A person who flatters someone powerful for personal gain"
+    },
+    {
+        "word": "TACITURN",
+        "clue": "Reserved or uncommunicative in speech"
+    },
+    {
+        "word": "TANTAMOUNT",
+        "clue": "Equivalent in effect or meaning"
+    },
+    {
+        "word": "TEMERITY",
+        "clue": "Excessive confidence or boldness"
+    },
+    {
+        "word": "TENEBROUS",
+        "clue": "Dark, shadowy, or obscure"
+    },
+    {
+        "word": "UBIQUITOUS",
+        "clue": "Present or found everywhere"
+    },
+    {
+        "word": "UNCANNY",
+        "clue": "Strangely mysterious or unsettling"
+    },
+    {
+        "word": "UNCTUOUS",
+        "clue": "Excessively flattering or ingratiating"
+    },
+    {
+        "word": "VICARIOUS",
+        "clue": "Experienced through another person rather than directly"
+    },
+    {
+        "word": "VOCIFEROUS",
+        "clue": "Expressing opinions loudly and forcefully"
+    },
+    {
+        "word": "WINSOME",
+        "clue": "Attractive or appealing in a sweetly innocent way"
+    },
+    {
+        "word": "WITTICISM",
+        "clue": "A clever or amusing remark"
+    },
+    {
+        "word": "ZEALOUS",
+        "clue": "Showing passionate enthusiasm for a cause"
+    },
+    {
+        "word": "ZEPHYR",
+        "clue": "A soft, gentle breeze"
+    }
+  ]
+}
