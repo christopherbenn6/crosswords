@@ -293,6 +293,8 @@ h2 {
   align-items: center;
 
   position: absolute;
+
+  transition: background-color, 0.4s ease;
 }
 
 .cell.selected-cell {
