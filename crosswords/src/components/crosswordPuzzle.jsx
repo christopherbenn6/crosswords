@@ -19,8 +19,8 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
             })
             setSelectedLetter(selectedLetterFromClues);
             setSelectedWord(word);
-            mobileInputRef.current?.focus();
             viewportRef.current?.focus();
+            mobileInputRef.current?.focus();
             
         }
     }, [selectedLetterFromClues, selectedLetterDirection, wordObjects]);
