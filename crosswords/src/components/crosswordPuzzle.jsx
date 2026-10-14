@@ -147,27 +147,18 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
         // Move your existing single-letter input logic here.
         // Replace e.key with letter.
         if (letter === "Backspace" || letter === "Delete") {
-            const currentIndex = selectedWord.letters.indexOf(selectedLetter);
-
-            const isCurrentLetterFilled = crosswordState.some(
-                (letterObject) =>
+            let prevIndex = selectedWord.letters.indexOf(selectedLetter) - 1;
+            let prevLetter = selectedWord.letters[prevIndex];
+            let isCurrentLetterFilled = crosswordState.some(
+                letterObject =>
                     letterObject.XPos === selectedLetter.XPos &&
                     letterObject.YPos === selectedLetter.YPos
-            );
-
-            // If the current cell is filled, clear it.
-            if (isCurrentLetterFilled) {
-                setCrosswordState((current) =>
-                    current.filter(
-                        (item) =>
-                            item.XPos !== selectedLetter.XPos ||
-                            item.YPos !== selectedLetter.YPos
-                    )
-                );
-
+            )
+            if (prevLetter && !isCurrentLetterFilled) {
+                selectLetterHandler(prevLetter);
+            } else if (!prevLetter) {
                 return;
             }
-
 
 
             setCrosswordState(current => {
