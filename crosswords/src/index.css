@@ -386,7 +386,7 @@ h2 {
   }
 }
 
-.mobile-keyboard-input {
+/* .mobile-keyboard-input {
     position: fixed;
     width: 1px;
     height: 1px;
@@ -396,4 +396,4 @@ h2 {
     pointer-events: none;
     left: 0;
     bottom: 0;
-}
+} */
