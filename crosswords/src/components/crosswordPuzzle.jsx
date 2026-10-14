@@ -2,7 +2,7 @@ import { use, useState, useEffect } from "react";
 import { useRef } from "react";
 import CrosswordCell from "./crosswordCell";
 
-export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswordState, setCrosswordState, selectedLetterFromClues, selectedLetterDirection}) {
+export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswordState, setCrosswordState, selectedLetterFromClues, selectedLetterDirection }) {
     const [selectedLetter, setSelectedLetter] = useState(null);
     const [selectedWord, setSelectedWord] = useState(null);
     const [selectedWordDirection, setSelectedWordDirection] = useState('across');
@@ -14,36 +14,41 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
             const word = wordObjects.find(object => {
                 return object.letters.find(letter => {
                     return letter === selectedLetterFromClues
-                     && object.direction == selectedLetterDirection
+                        && object.direction == selectedLetterDirection
                 })
             })
             setSelectedLetter(selectedLetterFromClues);
             setSelectedWord(word);
             viewportRef.current?.focus();
             mobileInputRef.current?.focus();
-            
+
         }
     }, [selectedLetterFromClues, selectedLetterDirection, wordObjects]);
 
-    function selectLetterHandler (letter) {
+    function selectLetterHandler(letter) {
+        setSelectedLetter(letter);
 
-        setSelectedLetter(letter)
-        let possibleWords = []
+        let possibleWords = [];
+
         wordObjects.forEach(wordObject => {
-            if(wordObject.letters.includes(letter)) {
-                possibleWords.push(wordObject)
+            if (wordObject.letters.includes(letter)) {
+                possibleWords.push(wordObject);
             }
         });
 
-        if(possibleWords.length > 1) {
-            let wordObject = possibleWords.find(word => word.direction === selectedWordDirection)
-            setSelectedWord(wordObject)
+        if (possibleWords.length > 1) {
+            let wordObject = possibleWords.find(
+                word => word.direction === selectedWordDirection
+            );
+
+            setSelectedWord(wordObject);
         } else {
             let wordObject = possibleWords[0];
-            setSelectedWord(wordObject)
-            setSelectedWordDirection(wordObject.direction)
+            setSelectedWord(wordObject);
+            setSelectedWordDirection(wordObject.direction);
         }
 
+        mobileInputRef.current?.focus();
     }
 
 
@@ -65,11 +70,11 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
         y: 0
     });
 
-    function zoomIn () {
+    function zoomIn() {
         setZoom(current => Math.min(current + 0.1, 3))
     }
 
-    function zoomOut () {
+    function zoomOut() {
         setZoom(current => Math.max(current - 0.1, 0.5))
     }
 
@@ -135,76 +140,31 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
         setDragging(false);
     }
 
-    function handleKeyDown(e) {
+    function handleLetterInput(letter) {
+        if (!selectedLetter || !selectedWord) return;
 
-        // Ingore if the user has not selected anything yet
-        if(!selectedLetter) return;
-
-        // If the key is a single character (not backspace/space/etc) and it is a letter
-        if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
-
-            setCrosswordState(current => {
-
-                // Filter out the current position, to then replace it
-                const newState = current.filter(
-                    letter =>
-                        !(
-                            letter.XPos === selectedLetter.XPos &&
-                            letter.YPos === selectedLetter.YPos
-                        )
-                );
-
-                newState.push({
-                    XPos: selectedLetter.XPos,
-                    YPos: selectedLetter.YPos,
-                    letter: e.key.toUpperCase()
-                });
-                
-                return newState;
-            });
-            let nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;
-
-            while (
-                selectedWord.letters[nextIndex] &&
-                crosswordState.some(
-                    letterObject =>
-                        letterObject.XPos === selectedWord.letters[nextIndex].XPos &&
-                        letterObject.YPos === selectedWord.letters[nextIndex].YPos
-                )
-            ) {
-                nextIndex++;
-            }
-
-            const nextLetter = selectedWord.letters[nextIndex];
-
-            if (nextLetter) {
-                selectLetterHandler(nextLetter);
-            } else {
-                // Deselect
-                setSelectedLetter(null);
-                setSelectedWord(null);
-            }
-            
-        } else if (e.key === "Backspace" || e.key === "Delete") {
+        // Move your existing single-letter input logic here.
+        // Replace e.key with letter.
+        if (letter === "Backspace" || letter === "Delete") {
             let prevIndex = selectedWord.letters.indexOf(selectedLetter) - 1;
             let prevLetter = selectedWord.letters[prevIndex];
             let isCurrentLetterFilled = crosswordState.some(
                 letterObject =>
                     letterObject.XPos === selectedLetter.XPos &&
                     letterObject.YPos === selectedLetter.YPos
-            )            
-            if(prevLetter && !isCurrentLetterFilled) {
+            )
+            if (prevLetter && !isCurrentLetterFilled) {
                 selectLetterHandler(prevLetter);
             } else if (!prevLetter) {
                 return;
             }
 
-            
+
             setCrosswordState(current => {
 
                 // Filter out the current position, to then replace it
 
-                if(isCurrentLetterFilled) {
+                if (isCurrentLetterFilled) {
                     return current.filter(
                         letter =>
                             !(
@@ -221,8 +181,59 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
                             )
                     );
                 }
-                
+
             });
+        }
+
+        setCrosswordState(current => {
+
+            // Filter out the current position, to then replace it
+            const newState = current.filter(
+                letter =>
+                    !(
+                        letter.XPos === selectedLetter.XPos &&
+                        letter.YPos === selectedLetter.YPos
+                    )
+            );
+
+            newState.push({
+                XPos: selectedLetter.XPos,
+                YPos: selectedLetter.YPos,
+                letter: letter.toUpperCase()
+            });
+
+            return newState;
+        });
+
+        let nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;
+
+        while (
+            selectedWord.letters[nextIndex] &&
+            crosswordState.some(
+                letterObject =>
+                    letterObject.XPos === selectedWord.letters[nextIndex].XPos &&
+                    letterObject.YPos === selectedWord.letters[nextIndex].YPos
+            )
+        ) {
+            nextIndex++;
+        }
+
+        const nextLetter = selectedWord.letters[nextIndex];
+
+        if (nextLetter) {
+            selectLetterHandler(nextLetter);
+        } else {
+            // Deselect
+            setSelectedLetter(null);
+            setSelectedWord(null);
+        }
+
+    }
+
+    function handleKeyDown(e) {
+        // If the key is a single character (not backspace/space/etc) and it is a letter
+        if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
+            handleLetterInput(e.key.toUpperCase());
         }
     }
 
@@ -240,35 +251,32 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
                 const value = e.target.value;
 
                 if (value.length > 0) {
-                    const letter = value.slice(-1).toUpperCase();
-
-                    // Connect this to your existing letter-entry logic.
-                    handleKeyDown(letter)
-
+                    handleLetterInput(value.slice(-1).toUpperCase());
                     e.target.value = "";
                 }
             }}
         />
         <div className="crossword-viewport"
-        ref={viewportRef}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onWheel={wheelHandler}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
+            ref={viewportRef}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            onWheel={wheelHandler}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
         >
-            <div className="cell-container" style={{ 
-            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}>
+            <div className="cell-container" style={{
+                transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`
+            }}>
                 {wordObjects.map(object => {
                     return object.letters.map(letter => {
 
                         const isSelected =
                             selectedLetter?.XPos === letter.XPos &&
                             selectedLetter?.YPos === letter.YPos;
-                        
-                        const isWordSelected = 
+
+                        const isWordSelected =
                             selectedWord &&
                             selectedWord.letters.some(selectedWordLetter => selectedWordLetter === letter);
 
@@ -294,7 +302,7 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
                     });
                 })}
             </div>
-            
+
         </div>
         <div className="crossword-toolbar">
             <div className="zoom-controls">
