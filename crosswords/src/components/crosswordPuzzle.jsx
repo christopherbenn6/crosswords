@@ -26,30 +26,31 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
     }, [selectedLetterFromClues, selectedLetterDirection, wordObjects]);
 
     function selectLetterHandler(letter) {
-        setSelectedLetter(letter);
+    setSelectedLetter(letter);
 
-        let possibleWords = [];
+    let possibleWords = [];
 
-        wordObjects.forEach(wordObject => {
-            if (wordObject.letters.includes(letter)) {
-                possibleWords.push(wordObject);
-            }
-        });
-
-        if (possibleWords.length > 1) {
-            let wordObject = possibleWords.find(
-                word => word.direction === selectedWordDirection
-            );
-
-            setSelectedWord(wordObject);
-        } else {
-            let wordObject = possibleWords[0];
-            setSelectedWord(wordObject);
-            setSelectedWordDirection(wordObject.direction);
+    wordObjects.forEach((wordObject) => {
+        if (wordObject.letters.includes(letter)) {
+            possibleWords.push(wordObject);
         }
+    });
 
-        mobileInputRef.current?.focus();
+    if (possibleWords.length > 1) {
+        let wordObject = possibleWords.find(
+            (word) => word.direction === selectedWordDirection
+        );
+
+        setSelectedWord(wordObject);
+    } else {
+        let wordObject = possibleWords[0];
+        setSelectedWord(wordObject);
+        setSelectedWordDirection(wordObject.direction);
     }
+
+    // Open the mobile keyboard after the cell is tapped.
+    mobileInputRef.current?.focus({ preventScroll: true });
+}
 
 
     const [zoom, setZoom] = useState(1)
