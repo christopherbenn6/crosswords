@@ -3,6 +3,7 @@ import Clues from "../components/clues"
 import CrosswordPuzzle from "../components/crosswordPuzzle"
 import GenerateButton from "../components/generateButton"
 import { useState } from "react"
+import { motion } from "motion/react"
 
 export default function Crossword({difficulty, wordCount, callback, backButtonCallback, wordObjects}) {
     const [crosswordState, setCrosswordState] = useState([])
@@ -60,7 +61,12 @@ export default function Crossword({difficulty, wordCount, callback, backButtonCa
         setCrosswordState([])
     }
 
-    return <main className="main crossword-main">
+    return <motion.main 
+        className="main crossword-main"
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        exit={{opacity:0}}
+    >
         {/* back, h1, top text */}
         <div className="crossword-top">
             <div>
@@ -84,13 +90,16 @@ export default function Crossword({difficulty, wordCount, callback, backButtonCa
             <GenerateButton resetDataCallback={resetDataCallback} callback={callback}></GenerateButton>
         </div>
         { isPuzzleCorrect() && (
-            <section className="success-message">
+            <motion.section className="success-message"
+                initial={{scaleY:0}}
+                animate={{scaleY:1, transition:{ duration: 0.25}}}
+            >
                 <div>
                     <h2>Congratulations!</h2>
                     <p>You have completed a{difficulty == 1  ? "n Easy" : difficulty == 2 ? " Medium" : " Hard"} {wordCount} word Random Crossword puzzle. </p>
                     <p>Can't get enough? Feel free to generate some more!</p>
                 </div>
-            </section>
+            </motion.section>
         )}
 
  
@@ -102,5 +111,5 @@ export default function Crossword({difficulty, wordCount, callback, backButtonCa
                 <Clues clueClickCallback={clueClickCallback} direction="down" wordObjects={wordObjects}></Clues>
             </div>
         </div>
-    </main>
+    </motion.main>
 }

@@ -4,6 +4,7 @@ import './App.css'
 import { createCrosswordData } from './logic/crossword'
 import Home from './pages/Home'
 import Crossword from './pages/Crossword'
+import { motion } from 'motion/react'
 
 function App() {
 
@@ -30,11 +31,23 @@ function App() {
 
   return <>
   { view === "home" && (
-    <Home callback={generateCallback}></Home>
+    <motion.div
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      exit={{opacity:0}}
+    >
+      <Home callback={generateCallback}></Home>
+    </motion.div>
   )}
 
   { view === "crossword" && (
-    <Crossword difficulty={difficulty} wordCount={wordCount} callback={generateCallback} backButtonCallback={backButtonCallback} wordObjects={crosswordData.words}></Crossword>
+    <motion.div
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      exit={{opacity:0}}
+    >
+      <Crossword difficulty={difficulty} wordCount={wordCount} callback={generateCallback} backButtonCallback={backButtonCallback} wordObjects={crosswordData.words}></Crossword>
+    </motion.div>
   )}
     
   </>
