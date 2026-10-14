@@ -147,18 +147,27 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
         // Move your existing single-letter input logic here.
         // Replace e.key with letter.
         if (letter === "Backspace" || letter === "Delete") {
-            let prevIndex = selectedWord.letters.indexOf(selectedLetter) - 1;
-            let prevLetter = selectedWord.letters[prevIndex];
-            let isCurrentLetterFilled = crosswordState.some(
-                letterObject =>
+            const currentIndex = selectedWord.letters.indexOf(selectedLetter);
+
+            const isCurrentLetterFilled = crosswordState.some(
+                (letterObject) =>
                     letterObject.XPos === selectedLetter.XPos &&
                     letterObject.YPos === selectedLetter.YPos
-            )
-            if (prevLetter && !isCurrentLetterFilled) {
-                selectLetterHandler(prevLetter);
-            } else if (!prevLetter) {
+            );
+
+            // If the current cell is filled, clear it.
+            if (isCurrentLetterFilled) {
+                setCrosswordState((current) =>
+                    current.filter(
+                        (item) =>
+                            item.XPos !== selectedLetter.XPos ||
+                            item.YPos !== selectedLetter.YPos
+                    )
+                );
+
                 return;
             }
+
 
 
             setCrosswordState(current => {
@@ -232,11 +241,17 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
     }
 
     function handleKeyDown(e) {
-        // If the key is a single character (not backspace/space/etc) and it is a letter
-        if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
-            handleLetterInput(e.key.toUpperCase());
-        }
+    if (e.key === "Backspace" || e.key === "Delete") {
+        e.preventDefault();
+        handleLetterInput(e.key);
+        return;
     }
+
+    if (/^[a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+        handleLetterInput(e.key.toUpperCase());
+    }
+}
 
     return <div className="crossword">
         <input
@@ -248,6 +263,12 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
             spellCheck={false}
             className="mobile-keyboard-input"
             aria-label="Enter crossword letter"
+            onKeyDown={(e) => {
+                if (e.key === "Backspace" || e.key === "Delete") {
+                    e.preventDefault();
+                    handleLetterInput(e.key);
+                }
+            }}
             onChange={(e) => {
                 const value = e.target.value;
 
