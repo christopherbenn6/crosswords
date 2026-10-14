@@ -142,94 +142,85 @@ export default function CrosswordPuzzle({ isPuzzleCorrect, wordObjects, crosswor
     }
 
     function handleLetterInput(letter) {
-        if (!selectedLetter || !selectedWord) return;
+    if (!selectedLetter || !selectedWord) return;
 
-        // Move your existing single-letter input logic here.
-        // Replace e.key with letter.
-        if (letter === "Backspace" || letter === "Delete") {
-            let prevIndex = selectedWord.letters.indexOf(selectedLetter) - 1;
-            let prevLetter = selectedWord.letters[prevIndex];
-            let isCurrentLetterFilled = crosswordState.some(
-                letterObject =>
-                    letterObject.XPos === selectedLetter.XPos &&
-                    letterObject.YPos === selectedLetter.YPos
-            )
-            if (prevLetter && !isCurrentLetterFilled) {
-                selectLetterHandler(prevLetter);
-            } else if (!prevLetter) {
-                return;
-            }
+    if (letter === "Backspace" || letter === "Delete") {
+        const currentIndex = selectedWord.letters.indexOf(selectedLetter);
 
+        const isCurrentLetterFilled = crosswordState.some(
+            (item) =>
+                item.XPos === selectedLetter.XPos &&
+                item.YPos === selectedLetter.YPos
+        );
 
-            setCrosswordState(current => {
-
-                // Filter out the current position, to then replace it
-
-                if (isCurrentLetterFilled) {
-                    return current.filter(
-                        letter =>
-                            !(
-                                letter.XPos === selectedLetter.XPos &&
-                                letter.YPos === selectedLetter.YPos
-                            )
-                    );
-                } else {
-                    return current.filter(
-                        letter =>
-                            !(
-                                letter.XPos === selectedWord.letters[prevIndex].XPos &&
-                                letter.YPos === selectedWord.letters[prevIndex].YPos
-                            )
-                    );
-                }
-
-            });
-        }
-
-        setCrosswordState(current => {
-
-            // Filter out the current position, to then replace it
-            const newState = current.filter(
-                letter =>
-                    !(
-                        letter.XPos === selectedLetter.XPos &&
-                        letter.YPos === selectedLetter.YPos
-                    )
+        if (isCurrentLetterFilled) {
+            setCrosswordState((current) =>
+                current.filter(
+                    (item) =>
+                        item.XPos !== selectedLetter.XPos ||
+                        item.YPos !== selectedLetter.YPos
+                )
             );
 
-            newState.push({
-                XPos: selectedLetter.XPos,
-                YPos: selectedLetter.YPos,
-                letter: letter.toUpperCase()
-            });
+            return;
+        }
 
-            return newState;
+        if (currentIndex > 0) {
+            const previousLetter = selectedWord.letters[currentIndex - 1];
+
+            selectLetterHandler(previousLetter);
+
+            setCrosswordState((current) =>
+                current.filter(
+                    (item) =>
+                        item.XPos !== previousLetter.XPos ||
+                        item.YPos !== previousLetter.YPos
+                )
+            );
+        }
+
+        return;
+    }
+
+    // Only allow a single alphabetic character to be entered.
+    if (!/^[a-zA-Z]$/.test(letter)) return;
+
+    setCrosswordState((current) => {
+        const newState = current.filter(
+            (item) =>
+                item.XPos !== selectedLetter.XPos ||
+                item.YPos !== selectedLetter.YPos
+        );
+
+        newState.push({
+            XPos: selectedLetter.XPos,
+            YPos: selectedLetter.YPos,
+            letter: letter.toUpperCase()
         });
 
-        let nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;
+        return newState;
+    });
 
-        while (
-            selectedWord.letters[nextIndex] &&
-            crosswordState.some(
-                letterObject =>
-                    letterObject.XPos === selectedWord.letters[nextIndex].XPos &&
-                    letterObject.YPos === selectedWord.letters[nextIndex].YPos
-            )
-        ) {
-            nextIndex++;
-        }
+    const nextIndex = selectedWord.letters.indexOf(selectedLetter) + 1;
 
-        const nextLetter = selectedWord.letters[nextIndex];
+    const nextLetter = selectedWord.letters
+        .slice(nextIndex)
+        .find(
+            (cell) =>
+                !crosswordState.some(
+                    (item) =>
+                        item.XPos === cell.XPos &&
+                        item.YPos === cell.YPos
+                )
+        );
 
-        if (nextLetter) {
-            selectLetterHandler(nextLetter);
-        } else {
-            // Deselect
-            setSelectedLetter(null);
-            setSelectedWord(null);
-        }
-
+    if (nextLetter) {
+        selectLetterHandler(nextLetter);
+    } else {
+        setSelectedLetter(null);
+        setSelectedWord(null);
     }
+}
 
     function handleKeyDown(e) {
     if (e.key === "Backspace" || e.key === "Delete") {
