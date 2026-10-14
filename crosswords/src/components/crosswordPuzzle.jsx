@@ -7,6 +7,7 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
     const [selectedWord, setSelectedWord] = useState(null);
     const [selectedWordDirection, setSelectedWordDirection] = useState('across');
     const viewportRef = useRef(null);
+    const mobileInputRef = useRef(null);
 
     useEffect(() => {
         if (selectedLetterFromClues) {
@@ -18,7 +19,9 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
             })
             setSelectedLetter(selectedLetterFromClues);
             setSelectedWord(word);
+            mobileInputRef.current?.focus();
             viewportRef.current?.focus();
+            
         }
     }, [selectedLetterFromClues, selectedLetterDirection, wordObjects]);
 
@@ -224,6 +227,28 @@ export default function CrosswordPuzzle ({isPuzzleCorrect, wordObjects, crosswor
     }
 
     return <div className="crossword">
+        <input
+            ref={mobileInputRef}
+            type="text"
+            inputMode="text"
+            autoComplete="off"
+            autoCapitalize="characters"
+            spellCheck={false}
+            className="mobile-keyboard-input"
+            aria-label="Enter crossword letter"
+            onChange={(e) => {
+                const value = e.target.value;
+
+                if (value.length > 0) {
+                    const letter = value.slice(-1).toUpperCase();
+
+                    // Connect this to your existing letter-entry logic.
+                    handleKeyDown(letter)
+
+                    e.target.value = "";
+                }
+            }}
+        />
         <div className="crossword-viewport"
         ref={viewportRef}
         onPointerDown={handlePointerDown}

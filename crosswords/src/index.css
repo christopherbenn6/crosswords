@@ -385,3 +385,15 @@ h2 {
     justify-content: unset;
   }
 }
+
+.mobile-keyboard-input {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    opacity: 0;
+    border: none;
+    pointer-events: none;
+    left: 0;
+    bottom: 0;
+}
